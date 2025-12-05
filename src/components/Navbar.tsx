@@ -1,4 +1,4 @@
-import { ArrowUp, Coffee, PanelLeft, X } from "lucide-react";
+import { Coffee, PanelLeft, X } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "~/components/ui/tooltip";
 import { useState, useEffect } from "react";
