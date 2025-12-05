@@ -65,7 +65,7 @@ const MapController = ({ selectedShop, isDiscoveryOpen }: { selectedShop: Coffee
             const targetLng = selectedShop.lng;
 
             // Calculate offset if discovery panel is open and we're on desktop
-            let flyToOption = {
+            const flyToOption = {
                 duration: 1.5,
                 easeLinearity: 0.25,
             };
@@ -79,9 +79,6 @@ const MapController = ({ selectedShop, isDiscoveryOpen }: { selectedShop: Coffee
 
                 // Get current zoom
                 const zoom = 16;
-
-                // Project the lat/lng to point
-                const point = map.project([targetLat, targetLng], zoom);
 
                 // Subtract offset (shift 'center' to the left, which moves 'view' to the right? Wait.)
                 // If we want the point to be at x + 200 (screen coords relative to center),
