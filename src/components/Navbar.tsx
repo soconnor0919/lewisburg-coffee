@@ -1,4 +1,4 @@
-import { Coffee, PanelLeft, X } from "lucide-react";
+import { ArrowUp, Coffee, PanelLeft, X } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "~/components/ui/tooltip";
 import { useState, useEffect } from "react";
@@ -39,7 +39,11 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
     <>
       <div className="absolute top-4 left-4 right-4 z-[1000] flex justify-center pointer-events-none">
         <div className="bg-background/60 backdrop-blur-2xl border border-border/50 shadow-2xl rounded-xl p-2 flex items-center justify-between w-full pointer-events-auto">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 relative">
+            {/* Pulsing indicator ring */}
+            {showTooltip && (
+              <div className="absolute inset-0 rounded-lg animate-ping bg-primary/30 pointer-events-none" />
+            )}
             <TooltipProvider>
               <Tooltip open={showTooltip} onOpenChange={setShowTooltip}>
                 <TooltipTrigger asChild>
@@ -57,7 +61,7 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
                     <span className="sr-only">Toggle Panel</span>
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent side="bottom" className="bg-primary text-primary-foreground font-semibold">
+                <TooltipContent side="bottom" className="bg-background/80 backdrop-blur-xl border-border/50 text-foreground font-semibold shadow-2xl">
                   <p>Discover Coffee Shops</p>
                 </TooltipContent>
               </Tooltip>
