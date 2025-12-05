@@ -15,7 +15,7 @@ export default function Navbar() {
           >
             <Coffee className="w-6 h-6 text-primary" />
             <h1 className="text-xl font-bold text-foreground font-serif tracking-wide leading-none pt-0.5">
-              Lewisburg Coffee
+              Lewisburg Coffee Map
             </h1>
           </div>
         </div>
