@@ -163,5 +163,16 @@ export const COFFEE_SHOPS = [
         phone: "(570) 524-0000",
         website: "https://www.panerabread.com",
         image: "/images/shops/panera-bread.jpg"
+    },
+    {
+        id: 16,
+        name: "Street of Shops Restaurant",
+        description: "Part of a shopping village, this retro eatery serves down-home American fare & breakfast.",
+        lat: "40.96779250919243",
+        lng: "-76.88264400489504",
+        address: "100 N Water St, Lewisburg, PA 17837",
+        phone: "(570) 523-0420",
+        website: "https://streetofshops.net",
+        image: "/images/shops/street-of-shops.jpg"
     }
 ];
