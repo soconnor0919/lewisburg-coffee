@@ -3,10 +3,13 @@
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Coffee } from 'lucide-react';
+import { useTheme } from "next-themes";
 import Navbar from "./Navbar";
+import { MapStyleControl } from "./MapStyleControl";
+import { ZoomControls } from "./ZoomControls";
 
 interface CoffeeShop {
     id: number;
@@ -51,6 +54,51 @@ const Map = ({ shops, onShopSelect }: MapProps) => {
 
     const customIcon = createCustomIcon();
 
+    const { resolvedTheme, setTheme } = useTheme();
+    const [mapStyle, setMapStyle] = useState(resolvedTheme === 'light' ? 'light' : 'dark');
+
+    // Sync map style with theme
+    useEffect(() => {
+        if (resolvedTheme === 'dark' && mapStyle === 'light') {
+            setMapStyle('dark');
+        } else if (resolvedTheme === 'light' && (mapStyle === 'dark' || mapStyle === 'satellite')) {
+            setMapStyle('light');
+        }
+    }, [resolvedTheme, mapStyle]);
+
+    // Handle manual style change
+    const handleStyleChange = (newStyle: string) => {
+        setMapStyle(newStyle);
+        if (newStyle === 'dark') {
+            setTheme('dark');
+        } else if (newStyle === 'light') {
+            setTheme('light');
+        } else if (newStyle === 'satellite') {
+            setTheme('dark');
+        }
+    };
+
+    const getTileLayer = () => {
+        switch (mapStyle) {
+            case "light":
+                return "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
+            case "satellite":
+                return "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
+            case "dark":
+            default:
+                return "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
+        }
+    };
+
+    const getAttribution = () => {
+        switch (mapStyle) {
+            case "satellite":
+                return 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
+            default:
+                return '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+        }
+    };
+
     return (
         <MapContainer
             center={[40.9645, -76.8845]}
@@ -61,9 +109,13 @@ const Map = ({ shops, onShopSelect }: MapProps) => {
             attributionControl={false}
         >
             <Navbar />
+            <div className="absolute bottom-8 right-4 z-[1000] flex flex-col gap-2 items-end">
+                <ZoomControls />
+                <MapStyleControl currentStyle={mapStyle} onStyleChange={handleStyleChange} />
+            </div>
             <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-                url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                attribution={getAttribution()}
+                url={getTileLayer()}
             />
             {shops.map((shop) => (
                 <Marker

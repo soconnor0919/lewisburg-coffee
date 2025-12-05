@@ -5,7 +5,9 @@ import MapLoader from "~/components/MapLoader";
 import Drawer from "~/components/Drawer";
 import { COFFEE_SHOPS } from "~/lib/data";
 
-export default function Home() {
+import { WelcomeModal } from "~/components/WelcomeModal";
+
+export default function HomePage() {
   const [selectedShop, setSelectedShop] = useState<typeof COFFEE_SHOPS[0] | null>(null);
 
   return (
@@ -23,6 +25,7 @@ export default function Home() {
         shop={selectedShop}
         onClose={() => setSelectedShop(null)}
       />
+      <WelcomeModal />
     </main>
   );
 }

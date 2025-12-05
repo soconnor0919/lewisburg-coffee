@@ -1,29 +1,71 @@
-# Create T3 App
+# Lewisburg Coffee Map ☕️🗺️
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+A modern, interactive map application to discover the best coffee spots in Lewisburg, PA. Built with the T3 Stack, featuring a premium glassmorphic UI, dynamic theming, and accurate geolocation data.
 
-## What's next? How do I make an app with this?
+## Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+### 🗺️ Interactive Map
+- **15+ Locations**: Verified coordinates for local cafes and major chains.
+- **Custom Markers**: Glassmorphic coffee cup icons.
+- **Map Styles**: Switch between **Dark**, **Light**, and **Satellite** views.
+- **Smart Zoom**: Smooth controls and "Home" reset button.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+### 🎨 Premium UI/UX
+- **Glassmorphism**: "Liquid Glass" aesthetic with `backdrop-blur` and translucent backgrounds.
+- **Dynamic Theming**:
+  - **Map-Driven**: Changing the map style automatically updates the entire app's theme.
+  - **System Sync**: Respects your device's Dark/Light mode preference on load.
+- **Responsive Design**: Full mobile support with a slide-out drawer for shop details.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+### ℹ️ Rich Data
+- **Detailed Info**: Photos, addresses, phone numbers, and websites for every shop.
+- **Direct Navigation**: "Get Directions" button links directly to Google Maps.
 
-## Learn More
+## Tech Stack
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+- **Framework**: [Next.js](https://nextjs.org) (App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com) (v4)
+- **Map Engine**: [React Leaflet](https://react-leaflet.js.org) & [Leaflet](https://leafletjs.com)
+- **Icons**: [Lucide React](https://lucide.dev)
+- **Theming**: [next-themes](https://github.com/pacocoursey/next-themes)
+- **UI Components**: [Radix UI](https://www.radix-ui.com) (Dialog, Dropdown, etc.)
+- **Language**: [TypeScript](https://www.typescriptlang.org)
+- **Runtime**: [Bun](https://bun.sh)
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## Getting Started
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+### Prerequisites
+- [Bun](https://bun.sh) (v1.0+)
 
-## How do I deploy this?
+### Installation
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/lewisburg-coffee.git
+   cd lewisburg-coffee
+   ```
+
+2. Install dependencies:
+   ```bash
+   bun install
+   ```
+
+3. Run the development server:
+   ```bash
+   bun dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Build
+
+To create a production build:
+
+```bash
+bun run build
+bun start
+```
+
+## License
+
+MIT

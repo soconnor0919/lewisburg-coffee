@@ -1,65 +1,30 @@
-import { Coffee, Plus, Minus, Home, Info, X } from "lucide-react";
-import { Card } from "~/components/ui/card";
+import { Coffee, X } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { useMap } from "react-leaflet";
 import { useState } from "react";
 
 export default function Navbar() {
-  const map = useMap();
   const [showAbout, setShowAbout] = useState(false);
 
   return (
     <>
       <div className="absolute top-0 left-0 right-0 z-[1000] p-4 pointer-events-none">
-        <Card className="flex flex-row items-center justify-between px-5 py-3 bg-black/60 backdrop-blur-2xl border-white/10 rounded-xl shadow-2xl pointer-events-auto w-full">
-          <div className="flex items-center gap-3">
-            <Coffee className="w-6 h-6 text-[#8B4513]" />
-            <h1 className="text-xl font-bold text-white font-serif tracking-wide leading-none pt-0.5">
+        <div className="flex flex-row items-center justify-between px-5 py-3 bg-background/60 backdrop-blur-2xl border border-border/50 rounded-lg shadow-2xl pointer-events-auto w-full">
+          <div
+            className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
+            onClick={() => window.dispatchEvent(new Event("show-welcome-modal"))}
+          >
+            <Coffee className="w-6 h-6 text-primary" />
+            <h1 className="text-xl font-bold text-foreground font-serif tracking-wide leading-none pt-0.5">
               Lewisburg Coffee
             </h1>
           </div>
-
-          <div className="flex items-center gap-2">
-            {/* <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setShowAbout(true)}
-              className="bg-black/20 hover:bg-black/40 text-white rounded-lg h-8 w-8 backdrop-blur-md border border-white/10 mr-2"
-            >
-              <Info className="w-4 h-4" />
-            </Button> */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => map.setView([40.9645, -76.8845], 15)}
-              className="bg-black/20 hover:bg-black/40 text-white rounded-lg h-8 w-8 backdrop-blur-md border border-white/10"
-            >
-              <Home className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => map.zoomOut()}
-              className="bg-black/20 hover:bg-black/40 text-white rounded-lg h-8 w-8 backdrop-blur-md border border-white/10"
-            >
-              <Minus className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => map.zoomIn()}
-              className="bg-black/20 hover:bg-black/40 text-white rounded-lg h-8 w-8 backdrop-blur-md border border-white/10"
-            >
-              <Plus className="w-4 h-4" />
-            </Button>
-          </div>
-        </Card>
+        </div>
       </div>
 
       {/* About Dialog Overlay */}
       {showAbout && (
         <div className="absolute inset-0 z-[2000] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <Card className="w-full max-w-md bg-black/60 backdrop-blur-2xl border-white/10 text-white p-6 relative shadow-2xl rounded-xl">
+          <div className="w-full max-w-md bg-black/60 backdrop-blur-2xl border border-white/10 text-white p-6 relative shadow-2xl rounded-xl">
             <Button
               variant="ghost"
               size="icon"
@@ -87,7 +52,7 @@ export default function Navbar() {
                 <p>Built with Next.js, Tailwind, and Leaflet</p>
               </div>
             </div>
-          </Card>
+          </div>
         </div>
       )}
     </>

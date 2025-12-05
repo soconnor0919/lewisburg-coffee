@@ -129,7 +129,7 @@ export const COFFEE_SHOPS = [
         address: "600 N Derr Dr, Lewisburg, PA 17837",
         phone: "(570) 524-4900",
         website: "https://www.dunkindonuts.com",
-        image: "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX2AHOPwtciA9yCg3RBi8aiZ3Ra-3693zBfqT3sHFxIHayMAHG2y9C1GkvW4210xhVx4YjiJ5D2U-XeRHJ1-jwHU42Mw_uciGnyGTtr3Ovl_IsVxDIuphqg9twFtbovZoNI7dO=w408-h307-k-no"
+        image: "https://bloximages.newyork1.vip.townnews.com/northcentralpa.com/content/tncms/assets/v3/editorial/2/87/2872aa54-5fab-11eb-9cb0-53994a2d0d92/600fc9c4b9859.image.jpg?resize=400%2C232"
     },
     {
         id: 13,
