@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
     Dialog,
     DialogContent,
@@ -13,6 +13,11 @@ import { Coffee, MapPin, Search, Navigation } from "lucide-react";
 
 export function WelcomeModal() {
     const [open, setOpen] = useState(false);
+    const openRef = useRef(false);
+
+    useEffect(() => {
+        openRef.current = open;
+    }, [open]);
 
     useEffect(() => {
         const hasSeenWelcome = localStorage.getItem("hasSeenWelcome");
@@ -20,7 +25,9 @@ export function WelcomeModal() {
             setOpen(true);
         }
 
-        const handleShowWelcome = () => setOpen(prev => !prev);
+        const handleShowWelcome = () => {
+            setOpen(!openRef.current);
+        };
         window.addEventListener("show-welcome-modal", handleShowWelcome);
         return () => window.removeEventListener("show-welcome-modal", handleShowWelcome);
     }, []);
