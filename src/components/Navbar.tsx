@@ -1,23 +1,50 @@
-import { Coffee, X } from "lucide-react";
+import { Coffee, PanelLeft, X } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { useState } from "react";
 
-export default function Navbar() {
+interface NavbarProps {
+  isDiscoveryOpen: boolean;
+  onToggleDiscovery: () => void;
+}
+
+export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarProps) {
   const [showAbout, setShowAbout] = useState(false);
+
+  const handleHeaderClick = () => {
+    const event = new CustomEvent('show-welcome-modal');
+    window.dispatchEvent(event);
+  };
 
   return (
     <>
-      <div className="absolute top-0 left-0 right-0 z-[1000] p-4 pointer-events-none">
-        <div className="flex flex-row items-center justify-between px-5 py-3 bg-background/60 backdrop-blur-2xl border border-border/50 rounded-lg shadow-2xl pointer-events-auto w-full">
-          <div
-            className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
-            onClick={() => window.dispatchEvent(new Event("show-welcome-modal"))}
-          >
-            <Coffee className="w-6 h-6 text-primary" />
-            <h1 className="text-xl font-bold text-foreground font-serif tracking-wide leading-none pt-0.5">
-              Lewisburg Coffee Map
-            </h1>
+      <div className="absolute top-4 left-4 right-4 z-[1000] flex justify-center pointer-events-none">
+        <div className="bg-background/60 backdrop-blur-2xl border border-border/50 shadow-2xl rounded-xl p-2 flex items-center justify-between w-full pointer-events-auto">
+          <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={onToggleDiscovery}
+              className={`h-10 w-10 rounded-lg hover:bg-background/40 transition-colors ${isDiscoveryOpen ? 'bg-background/40 text-primary' : 'text-muted-foreground'}`}
+            >
+              <PanelLeft className="h-5 w-5" />
+              <span className="sr-only">Toggle Panel</span>
+            </Button>
           </div>
+
+          <div
+            className="flex items-center gap-3 px-2 cursor-pointer group absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            onClick={handleHeaderClick}
+          >
+            <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors">
+              <Coffee className="h-6 w-6 text-primary" />
+            </div>
+            <div>
+              <h1 className="text-lg font-bold font-serif text-foreground leading-none">Lewisburg&nbsp;Coffee&nbsp;Map</h1>
+              <p className="text-xs text-muted-foreground font-serif mt-0.5">Find&nbsp;your&nbsp;perfect&nbsp;brew</p>
+            </div>
+          </div>
+
+          <div className="w-10" /> {/* Spacer to balance the toggle button */}
         </div>
       </div>
 

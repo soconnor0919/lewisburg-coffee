@@ -23,8 +23,10 @@ interface MapLoaderProps {
     shops: CoffeeShop[];
     onShopSelect: (shop: CoffeeShop) => void;
     selectedShop: CoffeeShop | null;
+    isDiscoveryOpen: boolean;
+    onToggleDiscovery: () => void;
 }
 
-export default function MapLoader({ shops, onShopSelect, selectedShop }: MapLoaderProps) {
-    return <Map shops={shops} onShopSelect={onShopSelect} selectedShop={selectedShop} />;
+export default function MapLoader({ shops, onShopSelect, selectedShop, isDiscoveryOpen, onToggleDiscovery }: MapLoaderProps) {
+    return <Map shops={shops} onShopSelect={onShopSelect} selectedShop={selectedShop} isDiscoveryOpen={isDiscoveryOpen} onToggleDiscovery={onToggleDiscovery} />;
 }

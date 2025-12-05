@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { useTheme } from "next-themes";
 import Navbar from "./Navbar";
 import { MapStyleControl } from "./MapStyleControl";
+import { LocateControl } from './LocateControl';
 import { ZoomControls } from "./ZoomControls";
 
 interface CoffeeShop {
@@ -25,6 +26,8 @@ interface MapProps {
     shops: CoffeeShop[];
     onShopSelect: (shop: CoffeeShop) => void;
     selectedShop: CoffeeShop | null;
+    isDiscoveryOpen: boolean;
+    onToggleDiscovery: () => void;
 }
 
 const MapController = ({ selectedShop }: { selectedShop: CoffeeShop | null }) => {
@@ -42,7 +45,7 @@ const MapController = ({ selectedShop }: { selectedShop: CoffeeShop | null }) =>
     return null;
 };
 
-const Map = ({ shops, onShopSelect, selectedShop }: MapProps) => {
+const Map = ({ shops, onShopSelect, selectedShop, isDiscoveryOpen, onToggleDiscovery }: MapProps) => {
     useEffect(() => {
         // Fix for Leaflet default icon not found
         // @ts-expect-error Fix for Leaflet default icon not found
@@ -122,9 +125,10 @@ const Map = ({ shops, onShopSelect, selectedShop }: MapProps) => {
             zoomControl={false}
             attributionControl={false}
         >
-            <Navbar />
+            <Navbar isDiscoveryOpen={isDiscoveryOpen} onToggleDiscovery={onToggleDiscovery} />
             <MapController selectedShop={selectedShop} />
             <div className="absolute bottom-8 right-4 z-[1000] flex flex-col gap-2 items-end">
+                <LocateControl />
                 <ZoomControls />
                 <MapStyleControl currentStyle={mapStyle} onStyleChange={handleStyleChange} />
             </div>
