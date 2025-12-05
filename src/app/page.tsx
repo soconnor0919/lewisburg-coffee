@@ -31,7 +31,10 @@ export default function HomePage() {
           shop={selectedShop}
           shops={COFFEE_SHOPS}
           onSelect={setSelectedShop}
-          onClose={() => setSelectedShop(null)}
+          onClose={() => {
+            setSelectedShop(null);
+            setIsDiscoveryOpen(true);
+          }}
           isOpen={isDiscoveryOpen}
           onToggleOpen={() => setIsDiscoveryOpen(false)}
         />

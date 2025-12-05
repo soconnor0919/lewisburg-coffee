@@ -51,10 +51,10 @@ export default function Drawer({ shop, shops, onSelect, onClose, isOpen, onToggl
         <div
             className={`absolute top-20 left-0 h-[calc(100dvh-6rem)] w-full sm:w-[400px] z-30 px-4 pt-3 pointer-events-none transition-transform duration-300 ease-in-out ${isOpen || shop ? 'translate-x-0' : '-translate-x-full'}`}
         >
-            <Card className="h-full w-full bg-background/60 dark:bg-background/65 backdrop-blur-2xl border-border/50 overflow-hidden relative shadow-xl rounded-r-xl border-0">
+            <Card className="h-full w-full bg-background/60 dark:bg-background/65 backdrop-blur-2xl border-border/50 overflow-hidden relative shadow-xl rounded-r-xl border-0 pointer-events-auto">
                 {/* Details View */}
                 <div
-                    className={`absolute inset-0 z-20 transition-transform duration-300 ease-in-out bg-background/80 backdrop-blur-3xl ${shop ? 'translate-x-0' : 'translate-x-full'}`}
+                    className={`absolute inset-0 z-20 transition-transform duration-300 ease-in-out bg-background/80 backdrop-blur-3xl ${shop ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'}`}
                 >
                     {activeShop && (
                         <div className="h-full flex flex-col relative">
