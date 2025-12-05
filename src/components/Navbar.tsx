@@ -72,27 +72,19 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
             </TooltipProvider>
           </div>
 
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <div
-                  className="flex items-center gap-3 px-2 cursor-pointer group absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-                  onClick={handleHeaderClick}
-                >
-                  <div className="p-2 rounded-lg group-hover:bg-primary/10 transition-colors">
-                    <Coffee className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h1 className="text-lg font-bold font-serif text-foreground leading-none">Lewisburg&nbsp;Coffee&nbsp;Map</h1>
-                    <p className="text-xs text-muted-foreground font-serif mt-0.5">Find&nbsp;your&nbsp;perfect&nbsp;brew</p>
-                  </div>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent side="bottom" className="bg-background/80 backdrop-blur-xl border-border/50 text-foreground font-semibold shadow-2xl">
-                <p>About This Map</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <div
+            className="flex items-center gap-3 px-2 cursor-pointer group absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            onClick={handleHeaderClick}
+            title="About This Map"
+          >
+            <div className="p-2 rounded-lg group-hover:bg-primary/10 transition-colors">
+              <Coffee className="h-6 w-6 text-primary" />
+            </div>
+            <div>
+              <h1 className="text-lg font-bold font-serif text-foreground leading-none">Lewisburg&nbsp;Coffee&nbsp;Map</h1>
+              <p className="text-xs text-muted-foreground font-serif mt-0.5">Find&nbsp;your&nbsp;perfect&nbsp;brew</p>
+            </div>
+          </div>
 
           <div className="w-10" /> {/* Spacer to balance the toggle button */}
         </div>

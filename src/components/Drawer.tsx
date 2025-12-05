@@ -25,9 +25,10 @@ interface DrawerProps {
     onSelect: (shop: CoffeeShop) => void;
     onClose: () => void;
     isOpen: boolean;
+    onToggleOpen?: () => void;
 }
 
-export default function Drawer({ shop, shops, onSelect, onClose, isOpen }: DrawerProps) {
+export default function Drawer({ shop, shops, onSelect, onClose, isOpen, onToggleOpen }: DrawerProps) {
     const [searchQuery, setSearchQuery] = useState("");
     const [imageLoading, setImageLoading] = useState(true);
 
@@ -149,7 +150,7 @@ export default function Drawer({ shop, shops, onSelect, onClose, isOpen }: Drawe
                             <Button
                                 variant="ghost"
                                 size="icon"
-                                onClick={onClose}
+                                onClick={onToggleOpen}
                                 className="absolute top-4 right-4 bg-background/20 hover:bg-background/40 text-foreground rounded-full h-8 w-8 backdrop-blur-md border border-border/50"
                             >
                                 <X className="w-4 h-4" />

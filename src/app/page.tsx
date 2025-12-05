@@ -42,6 +42,7 @@ export default function HomePage() {
         onSelect={setSelectedShop}
         onClose={() => setSelectedShop(null)}
         isOpen={isDiscoveryOpen}
+        onToggleOpen={() => setIsDiscoveryOpen(false)}
       />
       <WelcomeModal />
     </main>
