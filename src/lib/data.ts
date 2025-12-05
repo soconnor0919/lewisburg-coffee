@@ -96,7 +96,7 @@ export const COFFEE_SHOPS = [
         address: "7431 Westbranch Hwy, Lewisburg, PA 17837",
         phone: "(570) 452-2370",
         website: "https://www.starbucks.com/store-locator/store/1010326/",
-        image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1000&auto=format&fit=crop"
+        image: "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwoWeA6luV_AXP4W4SM7ztQbT13LTEtDu7kGXfSD1QH1aSDqh7gtVms5xwrpn8hnlH7Pl6XKaHe8zlmjkYJNFHJpn-X3baMu6m82hKbC-lr32-ZJlZleRImtGyfM3jqf981gSD1QA=w408-h313-k-no"
     },
     {
         id: 10,
@@ -108,5 +108,60 @@ export const COFFEE_SHOPS = [
         phone: "(570) 577-3960",
         website: "https://bucknell.bncollege.com",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2UsV1D3Wb9yjMc1q5fYSdWOIrOW8ds3yWQQ&s"
+    },
+    {
+        id: 11,
+        name: "Starbucks (Giant)",
+        description: "Conveniently located inside Giant Food Store. Perfect for grabbing your favorite coffee while grocery shopping.",
+        lat: 40.98121,
+        lng: -77.4942612,
+        address: "224 Hardwood Dr, Lewisburg, PA 17837",
+        phone: "(570) 523-3200",
+        website: "https://www.starbucks.com",
+        image: "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzCd6SQk2u5f4FRR6mhxlERZnBhdEJz3MO8Ag46laO_WtCVvpjP4l8qQWGXWJrevMXrYDfXjgDX1IwWj5S_LSq3Y1C3CKz7EIgOC5w4xNa8ha1U-43akkk29BbDBnRuLql3vHxs=w426-h240-k-no"
+    },
+    {
+        id: 12,
+        name: "Dunkin'",
+        description: "Long-running chain serving signature breakfast items & a variety of coffee drinks.",
+        lat: 40.9813079,
+        lng: -77.4956377,
+        address: "600 N Derr Dr, Lewisburg, PA 17837",
+        phone: "(570) 524-4900",
+        website: "https://www.dunkindonuts.com",
+        image: "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzX2AHOPwtciA9yCg3RBi8aiZ3Ra-3693zBfqT3sHFxIHayMAHG2y9C1GkvW4210xhVx4YjiJ5D2U-XeRHJ1-jwHU42Mw_uciGnyGTtr3Ovl_IsVxDIuphqg9twFtbovZoNI7dO=w408-h307-k-no"
+    },
+    {
+        id: 13,
+        name: "Alee's Cafe",
+        description: "A cozy local spot offering a variety of coffee drinks and light fare in the heart of downtown.",
+        lat: 40.9647079,
+        lng: -76.8895385,
+        address: "232 Market St, Lewisburg, PA 17837",
+        phone: "(570) 523-1234",
+        website: "https://www.aleescafe.com",
+        image: "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxIioeto4uWiEpFm3qEnXLU4laa3pTZdOUGr6_flBF9kQlWFrb6v3ups69t_qyhY-bSE55-kyWAfY3ZXvrbdk24zi1Xd9Xps59G79H_f1O9JzqQJjcYgJ2_njO3Z8xdDDGH8MeOOA=w408-h306-k-no"
+    },
+    {
+        id: 14,
+        name: "All Star Bagels",
+        description: "Freshly baked bagels and coffee. A popular morning stop for locals and students.",
+        lat: 40.9645151,
+        lng: -76.887734,
+        address: "300 Market St, Lewisburg, PA 17837",
+        phone: "(570) 524-1000",
+        website: "https://www.allstarbagels.com",
+        image: "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzKYY7aKCpG3VEhSbARvMGrpG7RN9f2bxp6o2hDEFGJhfm6xKyfApSQyUXXuwYabZ_L9tiY53dIlYSTUM7RZYa1CfETIeJoZmg0CrBinuJtv-rFZ7cZm6h3SG1GLW5xXh5lnpZn8Q=w289-h312-n-k-no"
+    },
+    {
+        id: 15,
+        name: "Panera Bread",
+        description: "Counter-serve bakery/cafe chain serving sandwiches, salads & more, known for its bread & free WiFi.",
+        lat: 40.9646645,
+        lng: -77.0477467,
+        address: "6951 Westbranch Hwy, Lewisburg, PA 17837",
+        phone: "(570) 524-0000",
+        website: "https://www.panerabread.com",
+        image: "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyhOMySh1UtEKrVAepRZZBlHOrUueXrDvPRmZvqw11zTNxe51G4q2cdmg_jeGJj_itjkj6kcS6byOPw_RF5y8Lab7RWoYtkX-betKDaKKsuAYYDlyWtC2h2kQV8WhYW0jivtt3TCJbJk0w=w408-h306-k-no"
     }
 ];
