@@ -1,6 +1,6 @@
 import "~/styles/globals.css";
 
-import { type Metadata } from "next";
+import { type Metadata, type Viewport } from "next";
 import { PT_Serif } from "next/font/google";
 
 import { ThemeProvider } from "~/components/ThemeProvider";
@@ -9,6 +9,14 @@ export const metadata: Metadata = {
   title: "Lewisburg Coffee Map",
   description: "Interactive map of coffee shops in Lewisburg, PA",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
+};
+
+export const viewport: Viewport = {
+  themeColor: "#8B4513",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 const ptSerif = PT_Serif({

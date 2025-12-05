@@ -17,6 +17,7 @@ export default function HomePage() {
         <MapLoader
           shops={COFFEE_SHOPS}
           onShopSelect={(shop: typeof COFFEE_SHOPS[0]) => setSelectedShop(shop)}
+          selectedShop={selectedShop}
         />
       </div>
 

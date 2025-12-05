@@ -1,6 +1,6 @@
 "use client";
 
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { useState, useEffect } from 'react';
@@ -24,9 +24,25 @@ interface CoffeeShop {
 interface MapProps {
     shops: CoffeeShop[];
     onShopSelect: (shop: CoffeeShop) => void;
+    selectedShop: CoffeeShop | null;
 }
 
-const Map = ({ shops, onShopSelect }: MapProps) => {
+const MapController = ({ selectedShop }: { selectedShop: CoffeeShop | null }) => {
+    const map = useMap();
+
+    useEffect(() => {
+        if (selectedShop) {
+            map.flyTo([selectedShop.lat, selectedShop.lng], 16, {
+                duration: 1.5,
+                easeLinearity: 0.25,
+            });
+        }
+    }, [selectedShop, map]);
+
+    return null;
+};
+
+const Map = ({ shops, onShopSelect, selectedShop }: MapProps) => {
     useEffect(() => {
         // Fix for Leaflet default icon not found
         // @ts-expect-error Fix for Leaflet default icon not found
@@ -107,6 +123,7 @@ const Map = ({ shops, onShopSelect }: MapProps) => {
             attributionControl={false}
         >
             <Navbar />
+            <MapController selectedShop={selectedShop} />
             <div className="absolute bottom-8 right-4 z-[1000] flex flex-col gap-2 items-end">
                 <ZoomControls />
                 <MapStyleControl currentStyle={mapStyle} onStyleChange={handleStyleChange} />
