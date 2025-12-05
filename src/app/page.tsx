@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MapLoader from "~/components/MapLoader";
 import Drawer from "~/components/Drawer";
+import Navbar from "~/components/Navbar";
 import { COFFEE_SHOPS } from "~/lib/data";
 
 import { WelcomeModal } from "~/components/WelcomeModal";
@@ -10,9 +11,23 @@ import { WelcomeModal } from "~/components/WelcomeModal";
 export default function HomePage() {
   const [selectedShop, setSelectedShop] = useState<typeof COFFEE_SHOPS[0] | null>(null);
   const [isDiscoveryOpen, setIsDiscoveryOpen] = useState(true);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  useEffect(() => {
+    // Hide discovery panel on mobile initially
+    const isMobile = window.innerWidth < 640; // sm breakpoint
+    setIsDiscoveryOpen(!isMobile);
+
+    // Mark map as loaded after a short delay
+    const timer = setTimeout(() => setIsMapLoaded(true), 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <main className="relative h-dvh w-screen overflow-hidden bg-black text-white font-serif">
+      {/* Navbar - always visible */}
+      <Navbar isDiscoveryOpen={isDiscoveryOpen} onToggleDiscovery={() => setIsDiscoveryOpen(!isDiscoveryOpen)} />
+
       {/* Map Background */}
       <div className="absolute inset-0 z-0">
         <MapLoader
@@ -22,19 +37,19 @@ export default function HomePage() {
             setIsDiscoveryOpen(true);
           }}
           selectedShop={selectedShop}
-          isDiscoveryOpen={isDiscoveryOpen}
-          onToggleDiscovery={() => setIsDiscoveryOpen(!isDiscoveryOpen)}
         />
       </div>
 
-      {/* Right Drawer */}
-      <Drawer
-        shop={selectedShop}
-        shops={COFFEE_SHOPS}
-        onSelect={setSelectedShop}
-        onClose={() => setSelectedShop(null)}
-        isOpen={isDiscoveryOpen}
-      />
+      {/* Right Drawer - only show after map loads */}
+      {isMapLoaded && (
+        <Drawer
+          shop={selectedShop}
+          shops={COFFEE_SHOPS}
+          onSelect={setSelectedShop}
+          onClose={() => setSelectedShop(null)}
+          isOpen={isDiscoveryOpen}
+        />
+      )}
       <WelcomeModal />
     </main>
   );

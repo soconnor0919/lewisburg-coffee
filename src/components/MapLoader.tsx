@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
-import { Coffee } from "lucide-react";
+import { Coffee, Loader2 } from "lucide-react";
 
 interface CoffeeShop {
     id: number;
@@ -21,11 +21,9 @@ interface MapLoaderProps {
     shops: CoffeeShop[];
     onShopSelect: (shop: CoffeeShop) => void;
     selectedShop: CoffeeShop | null;
-    isDiscoveryOpen: boolean;
-    onToggleDiscovery: () => void;
 }
 
-export default function MapLoader({ shops, onShopSelect, selectedShop, isDiscoveryOpen, onToggleDiscovery }: MapLoaderProps) {
+export default function MapLoader({ shops, onShopSelect, selectedShop }: MapLoaderProps) {
     const [isLoading, setIsLoading] = useState(true);
 
     const Map = dynamic(() => import("./Map"), {
@@ -33,8 +31,9 @@ export default function MapLoader({ shops, onShopSelect, selectedShop, isDiscove
         loading: () => (
             <div className="w-full h-full relative bg-background">
                 <Skeleton className="w-full h-full absolute inset-0" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <Coffee className="h-16 w-16 text-muted-foreground/50 animate-pulse" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                    <Coffee className="h-16 w-16 text-muted-foreground/50" />
+                    <Loader2 className="h-8 w-8 text-primary animate-spin" />
                 </div>
             </div>
         ),
@@ -46,5 +45,5 @@ export default function MapLoader({ shops, onShopSelect, selectedShop, isDiscove
         return () => clearTimeout(timer);
     }, []);
 
-    return <Map shops={shops} onShopSelect={onShopSelect} selectedShop={selectedShop} isDiscoveryOpen={isDiscoveryOpen} onToggleDiscovery={onToggleDiscovery} />;
+    return <Map shops={shops} onShopSelect={onShopSelect} selectedShop={selectedShop} />;
 }

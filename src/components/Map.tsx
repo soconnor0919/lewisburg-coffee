@@ -1,11 +1,10 @@
 "use client";
 
-import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { useState, useEffect } from 'react';
 import { useTheme } from "next-themes";
-import Navbar from "./Navbar";
 import { MapStyleControl } from "./MapStyleControl";
 import { LocateControl } from './LocateControl';
 import { ZoomControls } from "./ZoomControls";
@@ -26,8 +25,6 @@ interface MapProps {
     shops: CoffeeShop[];
     onShopSelect: (shop: CoffeeShop) => void;
     selectedShop: CoffeeShop | null;
-    isDiscoveryOpen: boolean;
-    onToggleDiscovery: () => void;
 }
 
 const MapController = ({ selectedShop }: { selectedShop: CoffeeShop | null }) => {
@@ -45,7 +42,7 @@ const MapController = ({ selectedShop }: { selectedShop: CoffeeShop | null }) =>
     return null;
 };
 
-const Map = ({ shops, onShopSelect, selectedShop, isDiscoveryOpen, onToggleDiscovery }: MapProps) => {
+const Map = ({ shops, onShopSelect, selectedShop }: MapProps) => {
     useEffect(() => {
         // Fix for Leaflet default icon not found
         // @ts-expect-error Fix for Leaflet default icon not found
@@ -125,7 +122,6 @@ const Map = ({ shops, onShopSelect, selectedShop, isDiscoveryOpen, onToggleDisco
             zoomControl={false}
             attributionControl={false}
         >
-            <Navbar isDiscoveryOpen={isDiscoveryOpen} onToggleDiscovery={onToggleDiscovery} />
             <MapController selectedShop={selectedShop} />
             <div className="absolute bottom-8 right-4 z-[1000] flex flex-col gap-2 items-end">
                 <LocateControl />

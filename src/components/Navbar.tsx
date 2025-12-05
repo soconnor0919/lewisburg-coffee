@@ -1,6 +1,7 @@
 import { Coffee, PanelLeft, X } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { useState } from "react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "~/components/ui/tooltip";
+import { useState, useEffect } from "react";
 
 interface NavbarProps {
   isDiscoveryOpen: boolean;
@@ -9,26 +10,58 @@ interface NavbarProps {
 
 export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarProps) {
   const [showAbout, setShowAbout] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const handleHeaderClick = () => {
     const event = new CustomEvent('show-welcome-modal');
     window.dispatchEvent(event);
   };
 
+  useEffect(() => {
+    // Show tooltip hint on mobile for first-time users
+    const hasSeenHint = localStorage.getItem('discovery-panel-hint-seen');
+    const isMobile = window.innerWidth < 640;
+
+    if (!hasSeenHint && isMobile) {
+      const timer = setTimeout(() => {
+        setShowTooltip(true);
+        // Auto-hide after 5 seconds
+        setTimeout(() => {
+          setShowTooltip(false);
+          localStorage.setItem('discovery-panel-hint-seen', 'true');
+        }, 5000);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   return (
     <>
       <div className="absolute top-4 left-4 right-4 z-[1000] flex justify-center pointer-events-none">
         <div className="bg-background/60 backdrop-blur-2xl border border-border/50 shadow-2xl rounded-xl p-2 flex items-center justify-between w-full pointer-events-auto">
           <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={onToggleDiscovery}
-              className={`h-10 w-10 rounded-lg hover:bg-background/40 transition-colors ${isDiscoveryOpen ? 'bg-background/40 text-primary' : 'text-muted-foreground'}`}
-            >
-              <PanelLeft className="h-5 w-5" />
-              <span className="sr-only">Toggle Panel</span>
-            </Button>
+            <TooltipProvider>
+              <Tooltip open={showTooltip} onOpenChange={setShowTooltip}>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => {
+                      onToggleDiscovery();
+                      setShowTooltip(false);
+                      localStorage.setItem('discovery-panel-hint-seen', 'true');
+                    }}
+                    className={`h-10 w-10 rounded-lg hover:bg-background/40 transition-colors ${isDiscoveryOpen ? 'bg-background/40 text-primary' : 'text-muted-foreground'}`}
+                  >
+                    <PanelLeft className="h-5 w-5" />
+                    <span className="sr-only">Toggle Panel</span>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="bottom" className="bg-primary text-primary-foreground font-semibold">
+                  <p>Discover Coffee Shops</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
 
           <div
