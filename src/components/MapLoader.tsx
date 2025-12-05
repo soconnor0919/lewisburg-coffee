@@ -20,6 +20,7 @@ interface MapLoaderProps {
     shops: CoffeeShop[];
     onShopSelect: (shop: CoffeeShop) => void;
     selectedShop: CoffeeShop | null;
+    isDiscoveryOpen: boolean;
 }
 
 // Move dynamic import outside component to prevent re-imports
@@ -36,6 +37,6 @@ const Map = dynamic(() => import("./Map"), {
     ),
 });
 
-export default function MapLoader({ shops, onShopSelect, selectedShop }: MapLoaderProps) {
-    return <Map shops={shops} onShopSelect={onShopSelect} selectedShop={selectedShop} />;
+export default function MapLoader({ shops, onShopSelect, selectedShop, isDiscoveryOpen }: MapLoaderProps) {
+    return <Map shops={shops} onShopSelect={onShopSelect} selectedShop={selectedShop} isDiscoveryOpen={isDiscoveryOpen} />;
 }

@@ -1,4 +1,4 @@
-import { Coffee, PanelLeft, X } from "lucide-react";
+import { Coffee, Search, X } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "~/components/ui/tooltip";
 import { useState, useEffect } from "react";
@@ -41,7 +41,7 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
   return (
     <>
       <div className="absolute top-4 left-4 right-4 z-[1000] flex justify-center pointer-events-none">
-        <div className="bg-background/60 dark:bg-background/65 backdrop-blur-2xl border border-border/50 rounded-xl p-2 flex items-center justify-between w-full pointer-events-auto">
+        <div className="bg-background/60 dark:bg-background/65 backdrop-blur-2xl border border-border/50 rounded-xl p-2 flex items-center justify-between w-full pointer-events-auto shadow-xl">
           <div className="flex items-center gap-2 relative">
             {/* Pulsing indicator ring - only during onboarding */}
             {isOnboarding && showTooltip && (
@@ -61,11 +61,11 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
                     }}
                     className={`h-10 w-10 rounded-lg hover:bg-background/40 transition-colors ${isDiscoveryOpen ? 'bg-background/40 text-primary' : 'text-muted-foreground'}`}
                   >
-                    <PanelLeft className="h-5 w-5" />
+                    <Search className="h-5 w-5" />
                     <span className="sr-only">Toggle Panel</span>
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent side="bottom" className="bg-background/80 backdrop-blur-xl border-border/50 text-foreground font-semibold shadow-2xl">
+                <TooltipContent side="right" className="bg-background/80 backdrop-blur-xl border-border/50 text-foreground font-semibold font-serif shadow-2xl">
                   <p>Discover Coffee Shops</p>
                 </TooltipContent>
               </Tooltip>

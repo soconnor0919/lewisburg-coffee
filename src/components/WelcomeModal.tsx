@@ -46,7 +46,7 @@ export function WelcomeModal() {
 
     return (
         <Dialog open={open} onOpenChange={handleOpenChange}>
-            <DialogContent className="sm:max-w-md bg-background/80 backdrop-blur-xl border-border/50">
+            <DialogContent className="sm:max-w-md bg-background/80 backdrop-blur-xl border-border/50 font-serif">
                 <DialogHeader>
                     <div className="mx-auto bg-primary/10 p-3 rounded-full mb-4 w-fit">
                         <Coffee className="h-8 w-8 text-primary" />
