@@ -1,23 +1,23 @@
-# Lewisburg Coffee Map ☕️🗺️
+# Lewisburg Coffee Map
 
 A modern, interactive map application to discover the best coffee spots in Lewisburg, PA. Built with the T3 Stack, featuring a premium glassmorphic UI, dynamic theming, and accurate geolocation data.
 
 ## Features
 
-### 🗺️ Interactive Map
+### Interactive Map
 - **15+ Locations**: Verified coordinates for local cafes and major chains.
 - **Custom Markers**: Glassmorphic coffee cup icons.
 - **Map Styles**: Switch between **Dark**, **Light**, and **Satellite** views.
 - **Smart Zoom**: Smooth controls and "Home" reset button.
 
-### 🎨 Premium UI/UX
+### Premium UI/UX
 - **Glassmorphism**: "Liquid Glass" aesthetic with `backdrop-blur` and translucent backgrounds.
 - **Dynamic Theming**:
   - **Map-Driven**: Changing the map style automatically updates the entire app's theme.
   - **System Sync**: Respects your device's Dark/Light mode preference on load.
 - **Responsive Design**: Full mobile support with a slide-out drawer for shop details.
 
-### ℹ️ Rich Data
+###  Rich Data
 - **Detailed Info**: Photos, addresses, phone numbers, and websites for every shop.
 - **Direct Navigation**: "Get Directions" button links directly to Google Maps.
 
