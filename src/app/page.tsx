@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { HydrateClient } from "~/trpc/server";
 import MapLoader from "~/components/MapLoader";
 import Navbar from "~/components/Navbar";
 import Drawer from "~/components/Drawer";
@@ -22,24 +21,22 @@ export default function Home() {
   const [selectedShop, setSelectedShop] = useState<typeof COFFEE_SHOPS[0] | null>(null);
 
   return (
-    <HydrateClient>
-      <main className="relative h-screen w-screen overflow-hidden bg-black text-white font-serif">
-        <Navbar />
+    <main className="relative h-screen w-screen overflow-hidden bg-black text-white font-serif">
+      <Navbar />
 
-        {/* Map Background */}
-        <div className="absolute inset-0 z-0">
-          <MapLoader
-            shops={COFFEE_SHOPS}
-            onShopSelect={(shop) => setSelectedShop(shop)}
-          />
-        </div>
-
-        {/* Right Drawer */}
-        <Drawer
-          shop={selectedShop}
-          onClose={() => setSelectedShop(null)}
+      {/* Map Background */}
+      <div className="absolute inset-0 z-0">
+        <MapLoader
+          shops={COFFEE_SHOPS}
+          onShopSelect={(shop: typeof COFFEE_SHOPS[0]) => setSelectedShop(shop)}
         />
-      </main>
-    </HydrateClient>
+      </div>
+
+      {/* Right Drawer */}
+      <Drawer
+        shop={selectedShop}
+        onClose={() => setSelectedShop(null)}
+      />
+    </main>
   );
 }
