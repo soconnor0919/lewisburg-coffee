@@ -10,10 +10,12 @@ import { WelcomeModal } from "~/components/WelcomeModal";
 
 export default function HomePage() {
   const [selectedShop, setSelectedShop] = useState<typeof COFFEE_SHOPS[0] | null>(null);
-  const [isDiscoveryOpen, setIsDiscoveryOpen] = useState(true);
+  const [isDiscoveryOpen, setIsDiscoveryOpen] = useState(true); // Default to true for SSR
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Hide discovery panel on mobile initially
+    setMounted(true);
+    // Set based on viewport after mount
     const isMobile = window.innerWidth < 640; // sm breakpoint
     setIsDiscoveryOpen(!isMobile);
   }, []);
@@ -29,21 +31,22 @@ export default function HomePage() {
           shops={COFFEE_SHOPS}
           onShopSelect={(shop: typeof COFFEE_SHOPS[0]) => {
             setSelectedShop(shop);
-            setIsDiscoveryOpen(true);
           }}
           selectedShop={selectedShop}
         />
       </div>
 
-      {/* Right Drawer */}
-      <Drawer
-        shop={selectedShop}
-        shops={COFFEE_SHOPS}
-        onSelect={setSelectedShop}
-        onClose={() => setSelectedShop(null)}
-        isOpen={isDiscoveryOpen}
-        onToggleOpen={() => setIsDiscoveryOpen(false)}
-      />
+      {/* Right Drawer - only render after mount to prevent hydration mismatch */}
+      {mounted && (
+        <Drawer
+          shop={selectedShop}
+          shops={COFFEE_SHOPS}
+          onSelect={setSelectedShop}
+          onClose={() => setSelectedShop(null)}
+          isOpen={isDiscoveryOpen}
+          onToggleOpen={() => setIsDiscoveryOpen(false)}
+        />
+      )}
       <WelcomeModal />
     </main>
   );
