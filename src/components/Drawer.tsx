@@ -132,7 +132,7 @@ export default function Drawer({ shop, shops, onSelect, onClose, isOpen, onToggl
                                         className="w-auto px-6 bg-primary/20 hover:bg-primary/40 text-foreground font-semibold rounded-lg shadow-lg transition-all hover:scale-[1.02] border border-primary/50 backdrop-blur-md"
                                     >
                                         <a
-                                            href={`https://www.google.com/maps/search/?api=1&query=${shop.lat},${shop.lng}`}
+                                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${shop.name}, ${shop.address}`)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
