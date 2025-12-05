@@ -90,7 +90,7 @@ export const COFFEE_SHOPS = [
     {
         id: 9,
         name: "Starbucks Coffee",
-        description: "Charming cafe offering gourmet coffee, lattes, and a full breakfast and lunch menu. A cozy spot with a friendly, hometown feel.",
+        description: "Seattle-based coffeehouse chain known for its signature roasts, light bites and WiFi availability.",
         lat: 40.98121817592506,
         lng: -76.88452326979083,
         address: "7431 Westbranch Hwy, Lewisburg, PA 17837",
