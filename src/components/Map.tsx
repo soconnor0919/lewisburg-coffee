@@ -6,6 +6,7 @@ import L from 'leaflet';
 import { useEffect } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Coffee } from 'lucide-react';
+import Navbar from "./Navbar";
 
 interface CoffeeShop {
     id: number;
@@ -26,22 +27,24 @@ interface MapProps {
 
 const Map = ({ shops, onShopSelect }: MapProps) => {
     useEffect(() => {
-        // No longer need default icon fix as we are using custom icons
+        // Fix for Leaflet default icon not found
+        // @ts-expect-error Fix for Leaflet default icon not found
+        delete L.Icon.Default.prototype._getIconUrl;
+        L.Icon.Default.mergeOptions({
+            iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+            iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+        });
     }, []);
 
     const createCustomIcon = () => {
-        const iconMarkup = renderToStaticMarkup(
-            <div className="relative flex items-center justify-center w-8 h-8 bg-[#8B4513] rounded-full border-2 border-white shadow-lg transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform">
-                <Coffee className="w-5 h-5 text-white" />
-                <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-l-transparent border-r-4 border-r-transparent border-t-4 border-t-[#8B4513]"></div>
-            </div>
-        );
-
-        return L.divIcon({
-            html: iconMarkup,
-            className: 'custom-marker', // Add a class for potential extra styling
+        return new L.DivIcon({
+            className: 'custom-icon',
+            html: `<div class="w-8 h-8 bg-[#8B4513]/60 backdrop-blur-md rounded-full border border-white/30 shadow-lg flex items-center justify-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>
+  </div>`,
             iconSize: [32, 32],
-            iconAnchor: [16, 32], // Anchor at bottom center
+            iconAnchor: [16, 32],
             popupAnchor: [0, -32],
         });
     };
@@ -50,11 +53,14 @@ const Map = ({ shops, onShopSelect }: MapProps) => {
 
     return (
         <MapContainer
-            center={[40.9645, -76.8844]}
+            center={[40.9645, -76.8845]}
             zoom={15}
             style={{ height: '100%', width: '100%' }}
             className="z-0"
+            zoomControl={false}
+            attributionControl={false}
         >
+            <Navbar />
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
                 url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"

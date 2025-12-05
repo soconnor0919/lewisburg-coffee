@@ -1,26 +1,27 @@
 import "~/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Lora } from "next/font/google";
+import { PT_Serif } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
 
 export const metadata: Metadata = {
   title: "Lewisburg Coffee Map",
-  description: "A guide to coffee in Lewisburg, PA",
+  description: "Interactive map of coffee shops in Lewisburg, PA",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-const lora = Lora({
+const ptSerif = PT_Serif({
   subsets: ["latin"],
-  variable: "--font-lora",
+  weight: ["400", "700"],
+  variable: "--font-pt-serif",
 });
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${lora.variable}`}>
+    <html lang="en" className={`${ptSerif.variable}`}>
       <body>
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
