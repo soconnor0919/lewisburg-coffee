@@ -41,7 +41,7 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
   return (
     <>
       <div className="absolute top-4 left-4 right-4 z-[1000] flex justify-center pointer-events-none">
-        <div className="bg-background/60 backdrop-blur-2xl border border-border/50 shadow-2xl rounded-xl p-2 flex items-center justify-between w-full pointer-events-auto">
+        <div className="bg-background/60 dark:bg-background/65 backdrop-blur-2xl border border-border/50 rounded-xl p-2 flex items-center justify-between w-full pointer-events-auto">
           <div className="flex items-center gap-2 relative">
             {/* Pulsing indicator ring - only during onboarding */}
             {isOnboarding && showTooltip && (

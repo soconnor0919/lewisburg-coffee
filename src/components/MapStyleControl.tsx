@@ -19,7 +19,7 @@ export function MapStyleControl({ currentStyle, onStyleChange }: MapStyleControl
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="icon" className="bg-background/60 dark:bg-background/60 backdrop-blur-2xl border-border/50 dark:border-border/50 h-10 w-10 rounded-lg shadow-2xl text-foreground">
+                <Button variant="outline" size="icon" className="bg-background/60 dark:bg-background/65 backdrop-blur-2xl border-border/50 dark:border-border/50 h-10 w-10 rounded-lg shadow-2xl text-foreground">
                     <Layers className="h-5 w-5" />
                     <span className="sr-only">Change map style</span>
                 </Button>

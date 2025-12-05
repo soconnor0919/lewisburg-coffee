@@ -48,7 +48,7 @@ export default function Drawer({ shop, shops, onSelect, onClose, isOpen, onToggl
         <div
             className={`absolute top-20 left-0 h-[calc(100dvh-6rem)] w-full sm:w-[400px] z-30 p-4 pointer-events-none transition-transform duration-300 ease-in-out ${isOpen || shop ? 'translate-x-0' : '-translate-x-full'}`}
         >
-            <Card className="h-full w-full bg-background/40 backdrop-blur-2xl border-border/50 shadow-2xl overflow-hidden flex flex-col gap-0 pointer-events-auto rounded-xl p-0 border-0 transition-all duration-300">
+            <Card className="h-full w-full bg-background/60 dark:bg-background/65 backdrop-blur-2xl border-border/50 overflow-hidden flex flex-col gap-0 pointer-events-auto rounded-r-xl p-0 border-0 transition-all duration-300">
                 {shop ? (
                     // Details View
                     // Details View

@@ -1,6 +1,6 @@
 "use client";
 
-import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Tooltip, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { useState, useEffect } from 'react';
@@ -140,7 +140,13 @@ const Map = ({ shops, onShopSelect, selectedShop }: MapProps) => {
                     eventHandlers={{
                         click: () => onShopSelect(shop),
                     }}
-                />
+                >
+                    <Tooltip direction="top" offset={[0, -20]} opacity={0.9}>
+                        <div className="font-serif font-semibold text-sm">
+                            {shop.name}
+                        </div>
+                    </Tooltip>
+                </Marker>
             ))}
         </MapContainer>
     );
