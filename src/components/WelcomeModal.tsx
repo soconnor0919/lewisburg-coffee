@@ -37,7 +37,7 @@ export function WelcomeModal() {
                     <div className="mx-auto bg-primary/10 p-3 rounded-full mb-4 w-fit">
                         <Coffee className="h-8 w-8 text-primary" />
                     </div>
-                    <DialogTitle className="text-center text-2xl font-serif">Welcome to the Lewisburg Coffee Map</DialogTitle>
+                    <DialogTitle className="text-center text-2xl font-serif">Welcome to the Lewisburg&nbsp;Coffee&nbsp;Map</DialogTitle>
                     <DialogDescription className="text-center text-muted-foreground pt-2">
                         Discover the best coffee spots in Lewisburg, PA.
                     </DialogDescription>

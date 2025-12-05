@@ -1,27 +1,38 @@
-import { X, MapPin, Phone, Globe, ExternalLink } from "lucide-react";
+import { X, MapPin, Globe, Phone, Coffee, ExternalLink } from "lucide-react";
 import { Card } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { ScrollArea } from "~/components/ui/scroll-area";
 import { Separator } from "~/components/ui/separator";
-
-interface CoffeeShop {
-    id: number;
-    name: string;
-    description: string;
-    lat: number;
-    lng: number;
-    address: string;
-    phone: string;
-    website: string;
-    image: string;
-}
+import { Skeleton } from "~/components/ui/skeleton";
+import { useState, useEffect } from "react";
 
 interface DrawerProps {
-    shop: CoffeeShop | null;
+    shop: {
+        id: number;
+        name: string;
+        description: string;
+        image: string;
+        address: string;
+        phone: string;
+        website: string;
+        lat: number;
+        lng: number;
+    } | null;
     onClose: () => void;
 }
 
 export default function Drawer({ shop, onClose }: DrawerProps) {
+    const [imageLoading, setImageLoading] = useState(true);
+
+    // Reset loading state when shop changes
+    useEffect(() => {
+        if (shop) {
+            setImageLoading(true);
+        }
+    }, [shop]);
+
+    if (!shop) return null;
+
     return (
         <div
             className={`absolute top-20 left-0 h-[calc(100vh-6rem)] w-full sm:w-[400px] z-30 transform transition-transform duration-300 ease-in-out p-4 pointer-events-none ${shop ? "translate-x-0" : "-translate-x-full"
@@ -30,12 +41,19 @@ export default function Drawer({ shop, onClose }: DrawerProps) {
             {shop && (
                 <Card className="h-full w-full bg-background/60 backdrop-blur-2xl border-border/50 shadow-2xl overflow-hidden flex flex-col gap-0 pointer-events-auto rounded-xl p-0 border-0">
                     {/* Header Image */}
-                    <div className="h-56 relative flex-shrink-0">
+                    <div className="h-56 relative flex-shrink-0 bg-muted/20">
+                        {imageLoading && (
+                            <div className="absolute inset-0 z-10 flex items-center justify-center">
+                                <Skeleton className="h-full w-full absolute inset-0" />
+                                <Coffee className="h-12 w-12 text-muted-foreground/50 animate-pulse relative z-20" />
+                            </div>
+                        )}
                         <div className="absolute inset-0 z-0">
                             <img
                                 src={shop.image}
                                 alt={shop.name}
-                                className="w-full h-full object-cover"
+                                className={`w-full h-full object-cover transition-opacity duration-500 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
+                                onLoad={() => setImageLoading(false)}
                                 style={{
                                     maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
                                     WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)'

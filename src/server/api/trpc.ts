@@ -71,24 +71,21 @@ export const createCallerFactory = t.createCallerFactory;
 export const createTRPCRouter = t.router;
 
 /**
- * Middleware for timing procedure execution and adding an artificial delay in development.
+ * Middleware for timing procedure execution and adding an artificial delay.
  *
- * You can remove this if you don't like it, but it can help catch unwanted waterfalls by simulating
- * network latency that would occur in production but not in local development.
+ * You can remove this if you don't want to do it.
  */
-const timingMiddleware = t.middleware(async ({ next, path }) => {
-  const start = Date.now();
-
+const timingMiddleware = t.middleware(async ({ next }) => {
   if (t._config.isDev) {
-    // artificial delay in dev
+    // artificial delay in dev 100-500ms
     const waitMs = Math.floor(Math.random() * 400) + 100;
     await new Promise((resolve) => setTimeout(resolve, waitMs));
   }
-
   const result = await next();
-
-  const end = Date.now();
-
+  if (t._config.isDev) {
+    // const durationMs = Date.now() - start;
+    // console.log(`[TRPC] ${path} took ${durationMs}ms to execute`);
+  }
   return result;
 });
 
