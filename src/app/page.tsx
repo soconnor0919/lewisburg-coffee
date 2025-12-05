@@ -1,52 +1,44 @@
-import Link from "next/link";
+"use client";
 
-import { LatestPost } from "~/app/_components/post";
-import { api, HydrateClient } from "~/trpc/server";
+import { useState } from "react";
+import { HydrateClient } from "~/trpc/server";
+import MapLoader from "~/components/MapLoader";
+import Navbar from "~/components/Navbar";
+import Drawer from "~/components/Drawer";
 
-export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
+const COFFEE_SHOPS = [
+  { id: 1, name: "Amami Kitchen", description: "Italian espresso & fresh food.", lat: 40.9547, lng: -76.8841 },
+  { id: 2, name: "Culture Coffee", description: "Specialty brews & matcha.", lat: 40.9660, lng: -76.8820 },
+  { id: 3, name: "Bucknell 7th St Cafe", description: "Campus favorite.", lat: 40.9547, lng: -76.8837 },
+  { id: 4, name: "Tastecraft Cafe", description: "Roastery & French macarons.", lat: 40.9635, lng: -76.8885 },
+  { id: 5, name: "Paris Bakery", description: "Authentic pastries & coffee.", lat: 40.9645, lng: -76.8845 },
+  { id: 6, name: "CycleUp Coffee", description: "Cycling themed cafe.", lat: 40.9640, lng: -76.8860 },
+  { id: 7, name: "Cornerstone Kitchen", description: "Fresh eats at Miller Center.", lat: 40.9610, lng: -76.8970 },
+  { id: 8, name: "Gram's Eatery", description: "Homestyle breakfast & coffee.", lat: 40.9642, lng: -76.8837 },
+  { id: 9, name: "DC Coffee", description: "Gourmet coffee & atmosphere.", lat: 40.9650, lng: -76.8825 },
+];
 
-  void api.post.getLatest.prefetch();
+export default function Home() {
+  const [selectedShop, setSelectedShop] = useState<typeof COFFEE_SHOPS[0] | null>(null);
 
   return (
     <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-          </h1>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/usage/first-steps"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">First Steps →</h3>
-              <div className="text-lg">
-                Just the basics - Everything you need to know to set up your
-                database and authentication.
-              </div>
-            </Link>
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/introduction"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">Documentation →</h3>
-              <div className="text-lg">
-                Learn more about Create T3 App, the libraries it uses, and how
-                to deploy it.
-              </div>
-            </Link>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
-              {hello ? hello.greeting : "Loading tRPC query..."}
-            </p>
-          </div>
+      <main className="relative h-screen w-screen overflow-hidden bg-black text-white font-serif">
+        <Navbar />
 
-          <LatestPost />
+        {/* Map Background */}
+        <div className="absolute inset-0 z-0">
+          <MapLoader
+            shops={COFFEE_SHOPS}
+            onShopSelect={(shop) => setSelectedShop(shop)}
+          />
         </div>
+
+        {/* Right Drawer */}
+        <Drawer
+          shop={selectedShop}
+          onClose={() => setSelectedShop(null)}
+        />
       </main>
     </HydrateClient>
   );
