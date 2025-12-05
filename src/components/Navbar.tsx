@@ -75,7 +75,6 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
           <div
             className="flex items-center gap-3 px-2 cursor-pointer group absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
             onClick={handleHeaderClick}
-            title="About This Map"
           >
             <div className="p-2 rounded-lg group-hover:bg-primary/10 transition-colors">
               <Coffee className="h-6 w-6 text-primary" />
@@ -93,32 +92,41 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
       {/* About Dialog Overlay */}
       {showAbout && (
         <div className="absolute inset-0 z-[2000] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-black/60 backdrop-blur-2xl border border-white/10 text-white p-6 relative shadow-2xl rounded-xl">
+          <div className="w-full max-w-md bg-background/80 backdrop-blur-2xl border border-border/50 text-foreground p-6 relative shadow-2xl rounded-xl">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setShowAbout(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white"
+              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"
             >
               <X className="w-5 h-5" />
             </Button>
 
             <div className="flex flex-col items-center text-center space-y-4">
-              <div className="p-3 bg-[#8B4513]/20 rounded-full">
-                <Coffee className="w-8 h-8 text-[#8B4513]" />
+              <div className="p-3 bg-primary/20 rounded-full">
+                <Coffee className="w-8 h-8 text-primary" />
               </div>
               <h2 className="text-2xl font-bold font-serif">Lewisburg Coffee Map</h2>
-              <p className="text-gray-300 font-serif leading-relaxed">
-                Explore the best coffee spots in Lewisburg, PA.
-                Curated for coffee enthusiasts.
+              <p className="text-muted-foreground font-serif leading-relaxed">
+                Discover the best coffee spots in Lewisburg, PA. Click on any marker to learn more about each location,
+                or use the discovery panel to browse and search all available shops.
               </p>
 
-              <div className="w-full h-px bg-white/10 my-4" />
+              <div className="w-full h-px bg-border/50 my-4" />
 
-              <div className="text-xs text-gray-500 space-y-2 font-sans">
-                <p>Map Data &copy; <a href="https://www.openstreetmap.org/copyright" className="underline hover:text-gray-300">OpenStreetMap</a> contributors</p>
-                <p>Tiles &copy; <a href="https://carto.com/attributions" className="underline hover:text-gray-300">CARTO</a></p>
-                <p>Built with Next.js, Tailwind, and Leaflet</p>
+              <div className="text-xs text-muted-foreground space-y-2 font-sans w-full text-left">
+                <p><strong>Features:</strong></p>
+                <ul className="list-disc list-inside space-y-1 ml-2">
+                  <li>Interactive map with coffee shop locations</li>
+                  <li>Search and filter coffee shops</li>
+                  <li>Detailed information for each location</li>
+                  <li>Get directions to any shop</li>
+                  <li>Light/Dark theme support</li>
+                </ul>
+                <div className="pt-4 border-t border-border/50 mt-4">
+                  <p>Map Data © <a href="https://www.openstreetmap.org/copyright" className="underline hover:text-foreground transition-colors">OpenStreetMap</a> contributors</p>
+                  <p>Tiles © <a href="https://carto.com/attributions" className="underline hover:text-foreground transition-colors">CARTO</a></p>
+                </div>
               </div>
             </div>
           </div>

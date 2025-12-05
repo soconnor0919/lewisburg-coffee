@@ -30,6 +30,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${ptSerif.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          defer
+          src="https://umami-iccw808w4wk088o0w4o8c8kg.coolify.soconnor.dev/script.js"
+          data-website-id="415c64e5-98c5-4975-bf49-2c900fe6b1b5"
+        />
+      </head>
       <body>
         <ThemeProvider
           attribute="class"
