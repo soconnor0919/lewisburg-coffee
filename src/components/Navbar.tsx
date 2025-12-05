@@ -11,6 +11,7 @@ interface NavbarProps {
 export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarProps) {
   const [showAbout, setShowAbout] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+  const [isOnboarding, setIsOnboarding] = useState(false);
 
   const handleHeaderClick = () => {
     const event = new CustomEvent('show-welcome-modal');
@@ -23,11 +24,13 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
     const isMobile = window.innerWidth < 640;
 
     if (!hasSeenHint && isMobile) {
+      setIsOnboarding(true);
       const timer = setTimeout(() => {
         setShowTooltip(true);
         // Auto-hide after 5 seconds
         setTimeout(() => {
           setShowTooltip(false);
+          setIsOnboarding(false);
           localStorage.setItem('discovery-panel-hint-seen', 'true');
         }, 5000);
       }, 1000);
@@ -40,8 +43,8 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
       <div className="absolute top-4 left-4 right-4 z-[1000] flex justify-center pointer-events-none">
         <div className="bg-background/60 backdrop-blur-2xl border border-border/50 shadow-2xl rounded-xl p-2 flex items-center justify-between w-full pointer-events-auto">
           <div className="flex items-center gap-2 relative">
-            {/* Pulsing indicator ring */}
-            {showTooltip && (
+            {/* Pulsing indicator ring - only during onboarding */}
+            {isOnboarding && showTooltip && (
               <div className="absolute inset-0 rounded-lg animate-ping bg-primary/30 pointer-events-none" />
             )}
             <TooltipProvider>
@@ -53,6 +56,7 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
                     onClick={() => {
                       onToggleDiscovery();
                       setShowTooltip(false);
+                      setIsOnboarding(false);
                       localStorage.setItem('discovery-panel-hint-seen', 'true');
                     }}
                     className={`h-10 w-10 rounded-lg hover:bg-background/40 transition-colors ${isDiscoveryOpen ? 'bg-background/40 text-primary' : 'text-muted-foreground'}`}
@@ -68,18 +72,27 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
             </TooltipProvider>
           </div>
 
-          <div
-            className="flex items-center gap-3 px-2 cursor-pointer group absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-            onClick={handleHeaderClick}
-          >
-            <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors">
-              <Coffee className="h-6 w-6 text-primary" />
-            </div>
-            <div>
-              <h1 className="text-lg font-bold font-serif text-foreground leading-none">Lewisburg&nbsp;Coffee&nbsp;Map</h1>
-              <p className="text-xs text-muted-foreground font-serif mt-0.5">Find&nbsp;your&nbsp;perfect&nbsp;brew</p>
-            </div>
-          </div>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div
+                  className="flex items-center gap-3 px-2 cursor-pointer group absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                  onClick={handleHeaderClick}
+                >
+                  <div className="p-2 rounded-lg group-hover:bg-primary/10 transition-colors">
+                    <Coffee className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h1 className="text-lg font-bold font-serif text-foreground leading-none">Lewisburg&nbsp;Coffee&nbsp;Map</h1>
+                    <p className="text-xs text-muted-foreground font-serif mt-0.5">Find&nbsp;your&nbsp;perfect&nbsp;brew</p>
+                  </div>
+                </div>
+              </TooltipTrigger>
+              <TooltipContent side="bottom" className="bg-background/80 backdrop-blur-xl border-border/50 text-foreground font-semibold shadow-2xl">
+                <p>About This Map</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
 
           <div className="w-10" /> {/* Spacer to balance the toggle button */}
         </div>

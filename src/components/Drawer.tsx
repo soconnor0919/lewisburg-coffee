@@ -145,7 +145,15 @@ export default function Drawer({ shop, shops, onSelect, onClose, isOpen }: Drawe
                 ) : (
                     // List View
                     <div className="flex flex-col h-full">
-                        <div className="p-4 border-b border-border/50 bg-background/40 backdrop-blur-md">
+                        <div className="p-4 border-b border-border/50 bg-background/40 backdrop-blur-md relative">
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={onClose}
+                                className="absolute top-4 right-4 bg-background/20 hover:bg-background/40 text-foreground rounded-full h-8 w-8 backdrop-blur-md border border-border/50"
+                            >
+                                <X className="w-4 h-4" />
+                            </Button>
                             <h2 className="text-xl font-bold font-serif mb-4 text-primary">Discover Coffee</h2>
                             <div className="relative">
                                 <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
