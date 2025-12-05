@@ -1,11 +1,9 @@
 "use client";
 
 import dynamic from "next/dynamic";
-
-const Map = dynamic(() => import("./Map"), {
-    ssr: false,
-    loading: () => <div className="w-full h-full bg-gray-100 animate-pulse flex items-center justify-center text-gray-400">Loading Map...</div>
-});
+import { useState, useEffect } from "react";
+import { Skeleton } from "~/components/ui/skeleton";
+import { Coffee } from "lucide-react";
 
 interface CoffeeShop {
     id: number;
@@ -28,5 +26,25 @@ interface MapLoaderProps {
 }
 
 export default function MapLoader({ shops, onShopSelect, selectedShop, isDiscoveryOpen, onToggleDiscovery }: MapLoaderProps) {
+    const [isLoading, setIsLoading] = useState(true);
+
+    const Map = dynamic(() => import("./Map"), {
+        ssr: false,
+        loading: () => (
+            <div className="w-full h-full relative bg-background">
+                <Skeleton className="w-full h-full absolute inset-0" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <Coffee className="h-16 w-16 text-muted-foreground/50 animate-pulse" />
+                </div>
+            </div>
+        ),
+    });
+
+    useEffect(() => {
+        // Small delay to ensure smooth transition
+        const timer = setTimeout(() => setIsLoading(false), 100);
+        return () => clearTimeout(timer);
+    }, []);
+
     return <Map shops={shops} onShopSelect={onShopSelect} selectedShop={selectedShop} isDiscoveryOpen={isDiscoveryOpen} onToggleDiscovery={onToggleDiscovery} />;
 }

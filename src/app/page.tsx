@@ -12,7 +12,7 @@ export default function HomePage() {
   const [isDiscoveryOpen, setIsDiscoveryOpen] = useState(true);
 
   return (
-    <main className="relative h-screen w-screen overflow-hidden bg-black text-white font-serif">
+    <main className="relative h-dvh w-screen overflow-hidden bg-black text-white font-serif">
       {/* Map Background */}
       <div className="absolute inset-0 z-0">
         <MapLoader
