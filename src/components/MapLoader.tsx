@@ -22,8 +22,9 @@ interface CoffeeShop {
 interface MapLoaderProps {
     shops: CoffeeShop[];
     onShopSelect: (shop: CoffeeShop) => void;
+    selectedShop: CoffeeShop | null;
 }
 
-export default function MapLoader({ shops, onShopSelect }: MapLoaderProps) {
-    return <Map shops={shops} onShopSelect={onShopSelect} />;
+export default function MapLoader({ shops, onShopSelect, selectedShop }: MapLoaderProps) {
+    return <Map shops={shops} onShopSelect={onShopSelect} selectedShop={selectedShop} />;
 }

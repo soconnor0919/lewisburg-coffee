@@ -43,7 +43,13 @@ export default function Drawer({ shop, onClose }: DrawerProps) {
                     {/* Header Image */}
                     <div className="h-56 relative flex-shrink-0 bg-muted/20">
                         {imageLoading && (
-                            <div className="absolute inset-0 z-10 flex items-center justify-center">
+                            <div
+                                className="absolute inset-0 z-10 flex items-center justify-center"
+                                style={{
+                                    maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
+                                    WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)'
+                                }}
+                            >
                                 <Skeleton className="h-full w-full absolute inset-0" />
                                 <Coffee className="h-12 w-12 text-muted-foreground/50 animate-pulse relative z-20" />
                             </div>
