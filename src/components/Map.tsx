@@ -121,12 +121,10 @@ const Map = ({ shops, onShopSelect, selectedShop, isDiscoveryOpen }: MapProps) =
     const createCustomIcon = () => {
         return new L.DivIcon({
             className: 'custom-icon',
-            html: `<div class="w-8 h-8 bg-[#8B4513]/60 backdrop-blur-md rounded-full border border-white/30 shadow-lg flex items-center justify-center">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M17 8h1a4 4 0 1 1 0 8h-1" /><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" /><line x1="6" x2="6" y1="2" y2="4" /><line x1="10" x2="10" y1="2" y2="4" /><line x1="14" x2="14" y1="2" y2="4" /></svg>
-  </div>`,
-            iconSize: [32, 32],
-            iconAnchor: [16, 32],
-            popupAnchor: [0, -32],
+            html: `<div class="w-4 h-4 bg-[#8B4513] rounded-full border-2 border-white shadow-lg"></div>`,
+            iconSize: [16, 16],
+            iconAnchor: [8, 8],
+            popupAnchor: [0, -10],
         });
     };
 
