@@ -4,6 +4,7 @@ import { type Metadata, type Viewport } from "next";
 import { PT_Serif } from "next/font/google";
 
 import { ThemeProvider } from "~/components/ThemeProvider";
+import { env } from "~/env";
 
 export const metadata: Metadata = {
   title: "Lewisburg Coffee Map",
@@ -35,8 +36,8 @@ export default function RootLayout({
         {process.env.NODE_ENV === "production" && (
           <script
             defer
-            src="https://umami-iccw808w4wk088o0w4o8c8kg.coolify.soconnor.dev/script.js"
-            data-website-id="415c64e5-98c5-4975-bf49-2c900fe6b1b5"
+            src={env.NEXT_PUBLIC_UMAMI_SCRIPT_URL}
+            data-website-id={env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
           />
         )}
       </head>
