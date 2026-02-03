@@ -67,7 +67,7 @@ jobs:
         env:
           NEXT_PUBLIC_UMAMI_SCRIPT_URL: ${{ secrets.NEXT_PUBLIC_UMAMI_SCRIPT_URL }}
           NEXT_PUBLIC_UMAMI_WEBSITE_ID: ${{ secrets.NEXT_PUBLIC_UMAMI_WEBSITE_ID }}
-          NEXT_PUBLIC_BASE_PATH: /lewisburg-coffee
+          BASE_PATH: /lewisburg-coffee
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

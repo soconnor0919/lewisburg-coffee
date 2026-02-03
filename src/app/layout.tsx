@@ -10,7 +10,7 @@ import { env } from "~/env";
 export const metadata: Metadata = {
   title: "Lewisburg Coffee Map",
   description: "Interactive map of coffee shops in Lewisburg, PA",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  // icons are automatically handled by file conventions in src/app/
 };
 
 export const viewport: Viewport = {
