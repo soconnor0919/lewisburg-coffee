@@ -49,6 +49,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <div className="pointer-events-none fixed bottom-0 left-0 right-0 z-50 flex justify-end p-4">
+            <div className="pointer-events-auto rounded-xl border border-white/20 bg-black/20 px-4 py-2 text-xs text-white/80 shadow-lg backdrop-blur-md transition-opacity hover:opacity-100">
+              © 2026 Sean O'Connor. All Rights Reserved.
+            </div>
+          </div>
         </ThemeProvider>
       </body>
     </html>
