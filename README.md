@@ -68,4 +68,4 @@ bun start
 
 ## License
 
-MIT
+GPLv3

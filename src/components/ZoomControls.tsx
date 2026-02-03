@@ -13,7 +13,7 @@ export function ZoomControls() {
                 variant="outline"
                 size="icon"
                 onClick={() => map.zoomIn()}
-                className="bg-background/60 dark:bg-background/65 backdrop-blur-2xl border-border/50 dark:border-border/50 h-10 w-10 rounded-lg shadow-xl text-foreground hover:bg-background/70 dark:hover:bg-background/75"
+                className="rounded-xl border border-glass-border bg-glass-background text-glass-text-primary shadow-lg backdrop-blur-md transition-all hover:bg-glass-border hover:text-white"
             >
                 <Plus className="h-5 w-5" />
                 <span className="sr-only">Zoom in</span>
@@ -22,7 +22,7 @@ export function ZoomControls() {
                 variant="outline"
                 size="icon"
                 onClick={() => map.zoomOut()}
-                className="bg-background/60 dark:bg-background/65 backdrop-blur-2xl border-border/50 dark:border-border/50 h-10 w-10 rounded-lg shadow-xl text-foreground hover:bg-background/70 dark:hover:bg-background/75"
+                className="rounded-xl border border-glass-border bg-glass-background text-glass-text-primary shadow-lg backdrop-blur-md transition-all hover:bg-glass-border hover:text-white"
             >
                 <Minus className="h-5 w-5" />
                 <span className="sr-only">Zoom out</span>
@@ -31,7 +31,7 @@ export function ZoomControls() {
                 variant="outline"
                 size="icon"
                 onClick={() => map.setView([40.9645, -76.8845], 15)}
-                className="bg-background/60 dark:bg-background/65 backdrop-blur-2xl border-border/50 dark:border-border/50 h-10 w-10 rounded-lg shadow-xl text-foreground hover:bg-background/70 dark:hover:bg-background/75"
+                className="rounded-xl border border-glass-border bg-glass-background text-glass-text-primary shadow-lg backdrop-blur-md transition-all hover:bg-glass-border hover:text-white"
             >
                 <Home className="h-5 w-5" />
                 <span className="sr-only">Reset view</span>

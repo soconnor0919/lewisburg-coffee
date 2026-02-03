@@ -3,18 +3,7 @@
 import dynamic from "next/dynamic";
 import { Skeleton } from "~/components/ui/skeleton";
 import { Coffee, Loader2 } from "lucide-react";
-
-interface CoffeeShop {
-    id: number;
-    name: string;
-    description: string;
-    lat: number;
-    lng: number;
-    address: string;
-    phone: string;
-    website: string;
-    image: string;
-}
+import { type CoffeeShop } from "~/lib/data";
 
 interface MapLoaderProps {
     shops: CoffeeShop[];

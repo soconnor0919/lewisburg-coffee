@@ -8,18 +8,7 @@ import { useTheme } from "next-themes";
 import { MapStyleControl } from "./MapStyleControl";
 import { LocateControl } from './LocateControl';
 import { ZoomControls } from "./ZoomControls";
-
-interface CoffeeShop {
-    id: number;
-    name: string;
-    description: string;
-    lat: number;
-    lng: number;
-    address: string;
-    phone: string;
-    website: string;
-    image: string;
-}
+import { type CoffeeShop } from "~/lib/data";
 
 interface MapProps {
     shops: CoffeeShop[];
@@ -185,7 +174,7 @@ const Map = ({ shops, onShopSelect, selectedShop, isDiscoveryOpen }: MapProps) =
             attributionControl={false}
         >
             <MapController selectedShop={selectedShop} isDiscoveryOpen={isDiscoveryOpen} />
-            <div className="absolute bottom-8 right-4 z-[1000] flex flex-col gap-2 items-end">
+            <div className="absolute bottom-20 right-4 z-[1000] flex flex-col gap-2 items-end">
                 <LocateControl />
                 <ZoomControls />
                 <MapStyleControl currentStyle={mapStyle} onStyleChange={handleStyleChange} />

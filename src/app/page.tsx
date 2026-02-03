@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 import MapLoader from "~/components/MapLoader";
 import Drawer from "~/components/Drawer";
 import Navbar from "~/components/Navbar";
-import { COFFEE_SHOPS } from "~/lib/data";
+import { COFFEE_SHOPS, type CoffeeShop } from "~/lib/data";
 
 import { WelcomeModal } from "~/components/WelcomeModal";
 
 export default function HomePage() {
-  const [selectedShop, setSelectedShop] = useState<typeof COFFEE_SHOPS[0] | null>(null);
+  const [selectedShop, setSelectedShop] = useState<CoffeeShop | null>(null);
   const [isDiscoveryOpen, setIsDiscoveryOpen] = useState(true); // Default to true for SSR
   const [mounted, setMounted] = useState(false);
 

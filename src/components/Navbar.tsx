@@ -40,12 +40,12 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
 
   return (
     <>
-      <div className="absolute top-4 left-4 right-4 z-[1000] flex justify-center pointer-events-none">
-        <div className="bg-background/60 dark:bg-background/65 backdrop-blur-2xl border border-border/50 rounded-xl p-2 flex items-center justify-between w-full pointer-events-auto shadow-xl">
+      <div className="absolute top-4 left-4 right-4 z-40 flex justify-center pointer-events-none">
+        <div className="bg-glass-background backdrop-blur-xl border border-glass-border rounded-xl p-2 flex items-center justify-between w-full pointer-events-auto shadow-lg">
           <div className="flex items-center gap-2 relative">
             {/* Pulsing indicator ring - only during onboarding */}
             {isOnboarding && showTooltip && (
-              <div className="absolute inset-0 rounded-lg animate-ping bg-primary/30 pointer-events-none" />
+              <div className="absolute inset-0 rounded-lg animate-ping bg-amber-500/30 pointer-events-none" />
             )}
             <TooltipProvider>
               <Tooltip open={showTooltip} onOpenChange={setShowTooltip}>
@@ -59,13 +59,13 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
                       setIsOnboarding(false);
                       localStorage.setItem('discovery-panel-hint-seen', 'true');
                     }}
-                    className={`h-10 w-10 rounded-lg hover:bg-background/40 transition-colors ${isDiscoveryOpen ? 'bg-background/40 text-primary' : 'text-muted-foreground'}`}
+                    className={`h-10 w-10 rounded-lg transition-colors ${isDiscoveryOpen ? 'bg-glass-border text-amber-500' : 'text-glass-text-primary hover:bg-glass-border hover:text-white'}`}
                   >
                     <Search className="h-5 w-5" />
                     <span className="sr-only">Toggle Panel</span>
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent side="right" className="bg-background/80 backdrop-blur-xl border-border/50 text-foreground font-semibold font-serif shadow-2xl">
+                <TooltipContent side="right" className="bg-glass-background backdrop-blur-xl border-glass-border text-glass-text-primary font-semibold font-serif shadow-2xl">
                   <p>Discover Coffee Shops</p>
                 </TooltipContent>
               </Tooltip>
@@ -76,12 +76,12 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
             className="flex items-center gap-3 px-2 cursor-pointer group absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
             onClick={handleHeaderClick}
           >
-            <div className="p-2 rounded-lg group-hover:bg-primary/10 transition-colors">
-              <Coffee className="h-6 w-6 text-primary" />
+            <div className="p-2 rounded-lg group-hover:bg-glass-border transition-colors">
+              <Coffee className="h-6 w-6 text-amber-500" />
             </div>
             <div>
-              <h1 className="text-lg font-bold font-serif text-foreground leading-none">Lewisburg&nbsp;Coffee&nbsp;Map</h1>
-              <p className="text-xs text-muted-foreground font-serif mt-0.5">Find&nbsp;your&nbsp;perfect&nbsp;brew</p>
+              <h1 className="text-lg font-bold font-serif text-glass-text-primary leading-none">Lewisburg&nbsp;Coffee&nbsp;Map</h1>
+              <p className="text-xs text-glass-text-secondary font-serif mt-0.5">Find&nbsp;your&nbsp;perfect&nbsp;brew</p>
             </div>
           </div>
 
@@ -92,30 +92,30 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
       {/* About Dialog Overlay */}
       {showAbout && (
         <div className="absolute inset-0 z-[2000] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-background/80 backdrop-blur-2xl border border-border/50 text-foreground p-6 relative shadow-2xl rounded-xl">
+          <div className="w-full max-w-md bg-glass-background backdrop-blur-xl border border-glass-border text-glass-text-primary p-6 relative shadow-2xl rounded-xl">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setShowAbout(false)}
-              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"
+              className="absolute top-4 right-4 text-glass-text-secondary hover:text-white hover:bg-glass-border"
             >
               <X className="w-5 h-5" />
             </Button>
 
             <div className="flex flex-col items-center text-center space-y-4">
-              <div className="p-3 bg-primary/20 rounded-full">
-                <Coffee className="w-8 h-8 text-primary" />
+              <div className="p-3 bg-white/5 rounded-full">
+                <Coffee className="w-8 h-8 text-amber-500" />
               </div>
               <h2 className="text-2xl font-bold font-serif">Lewisburg Coffee Map</h2>
-              <p className="text-muted-foreground font-serif leading-relaxed">
+              <p className="text-white/60 font-serif leading-relaxed">
                 Discover the best coffee spots in Lewisburg, PA. Click on any marker to learn more about each location,
                 or use the discovery panel to browse and search all available shops.
               </p>
 
-              <div className="w-full h-px bg-border/50 my-4" />
+              <div className="w-full h-px bg-white/10 my-4" />
 
-              <div className="text-xs text-muted-foreground space-y-2 font-sans w-full text-left">
-                <p><strong>Features:</strong></p>
+              <div className="text-xs text-white/60 space-y-2 font-sans w-full text-left">
+                <p><strong className="text-white/80">Features:</strong></p>
                 <ul className="list-disc list-inside space-y-1 ml-2">
                   <li>Interactive map with coffee shop locations</li>
                   <li>Search and filter coffee shops</li>
@@ -123,9 +123,9 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
                   <li>Get directions to any shop</li>
                   <li>Light/Dark theme support</li>
                 </ul>
-                <div className="pt-4 border-t border-border/50 mt-4">
-                  <p>Map Data © <a href="https://www.openstreetmap.org/copyright" className="underline hover:text-foreground transition-colors">OpenStreetMap</a> contributors</p>
-                  <p>Tiles © <a href="https://carto.com/attributions" className="underline hover:text-foreground transition-colors">CARTO</a></p>
+                <div className="pt-4 border-t border-white/10 mt-4">
+                  <p>Map Data © <a href="https://www.openstreetmap.org/copyright" className="underline hover:text-white transition-colors">OpenStreetMap</a> contributors</p>
+                  <p>Tiles © <a href="https://carto.com/attributions" className="underline hover:text-white transition-colors">CARTO</a></p>
                 </div>
               </div>
             </div>

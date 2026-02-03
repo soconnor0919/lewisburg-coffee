@@ -4,6 +4,7 @@ import { type Metadata, type Viewport } from "next";
 import { PT_Serif } from "next/font/google";
 
 import { ThemeProvider } from "~/components/ThemeProvider";
+import { CopyrightFooter } from "~/components/CopyrightFooter";
 import { env } from "~/env";
 
 export const metadata: Metadata = {
@@ -30,7 +31,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${ptSerif.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${ptSerif.variable} `} suppressHydrationWarning>
       <head>
         {/* only load analytics on production */}
         {process.env.NODE_ENV === "production" && (
@@ -49,13 +50,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-          <div className="pointer-events-none fixed bottom-0 left-0 right-0 z-50 flex justify-end p-4">
-            <div className="pointer-events-auto rounded-xl border border-white/20 bg-black/20 px-4 py-2 text-xs text-white/80 shadow-lg backdrop-blur-md transition-opacity hover:opacity-100">
-              © 2026 Sean O'Connor. All Rights Reserved.
-            </div>
-          </div>
+          <CopyrightFooter />
         </ThemeProvider>
       </body>
     </html>
+
   );
 }

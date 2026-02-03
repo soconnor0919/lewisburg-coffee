@@ -1,4 +1,16 @@
-export const COFFEE_SHOPS = [
+export interface CoffeeShop {
+    id: number;
+    name: string;
+    description: string;
+    lat: number;
+    lng: number;
+    address: string;
+    phone: string;
+    website: string;
+    image: string;
+}
+
+export const COFFEE_SHOPS: CoffeeShop[] = [
     {
         id: 1,
         name: "Amami Kitchen",
