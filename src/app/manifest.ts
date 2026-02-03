@@ -3,7 +3,7 @@ import { type MetadataRoute } from 'next';
 export const dynamic = 'force-static';
 
 export default function manifest(): MetadataRoute.Manifest {
-    const basePath = process.env.BASE_PATH ?? '';
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
     return {
         name: 'Lewisburg Coffee Map',
         short_name: 'Coffee Map',

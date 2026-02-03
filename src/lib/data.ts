@@ -1,3 +1,5 @@
+import { getImagePath } from "./utils";
+
 export interface CoffeeShop {
     id: number;
     name: string;
@@ -20,7 +22,7 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "103 S 6th St, Lewisburg, PA 17837",
         phone: "(570) 490-7857",
         website: "https://www.amamiespresso.com",
-        image: "/images/shops/amami-kitchen.jpg"
+        image: getImagePath("/images/shops/amami-kitchen.jpg")
     },
     {
         id: 2,
@@ -31,7 +33,7 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "216 St. John St, Lewisburg, PA 17837",
         phone: "(570) 601-7903",
         website: "https://www.instagram.com/culturecoffeee_",
-        image: "/images/shops/culture-coffee.jpg"
+        image: getImagePath("/images/shops/culture-coffee.jpg")
     },
     {
         id: 3,
@@ -42,7 +44,7 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "420 S 7th St, Lewisburg, PA 17837",
         phone: "(570) 577-1240",
         website: "https://www.bucknell.edu/life-bucknell/dining-services/places-eat",
-        image: "/images/shops/7th-st-cafe.jpg"
+        image: getImagePath("/images/shops/7th-st-cafe.jpg")
     },
     {
         id: 4,
@@ -53,7 +55,7 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "512 Market St, Lewisburg, PA 17837",
         phone: "(570) 768-5340",
         website: "https://www.tastecraftcafe.com",
-        image: "/images/shops/tastecraft-cafe.jpg"
+        image: getImagePath("/images/shops/tastecraft-cafe.jpg")
     },
     {
         id: 5,
@@ -64,7 +66,7 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "335 Market St, Lewisburg, PA 17837",
         phone: "(570) 884-2138",
         website: "https://parisbakery.cafe",
-        image: "/images/shops/paris-bakery-caf.jpg"
+        image: getImagePath("/images/shops/paris-bakery-caf.jpg")
     },
     {
         id: 6,
@@ -75,7 +77,7 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "429 Market St, Lewisburg, PA 17837",
         phone: "(570) 413-1705",
         website: "https://www.cycleupcafe.com",
-        image: "/images/shops/cycleup-coffee.jpg"
+        image: getImagePath("/images/shops/cycleup-coffee.jpg")
     },
     {
         id: 7,
@@ -86,7 +88,7 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "120 Hardwood Dr, Lewisburg, PA 17837",
         phone: "(570) 556-4191",
         website: "https://millercenterlewisburg.com/cornerstone-kitchen",
-        image: "/images/shops/cornerstone-kitchen.jpg"
+        image: getImagePath("/images/shops/cornerstone-kitchen.jpg")
     },
     {
         id: 8,
@@ -97,7 +99,7 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "21 N 3rd St, Lewisburg, PA 17837",
         phone: "(570) 522-0230",
         website: "https://www.facebook.com/gramseaterylewisburg",
-        image: "/images/shops/gram-s-eatery.jpg"
+        image: getImagePath("/images/shops/gram-s-eatery.jpg")
     },
     {
         id: 9,
@@ -108,7 +110,7 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "7431 Westbranch Hwy, Lewisburg, PA 17837",
         phone: "(570) 452-2370",
         website: "https://www.starbucks.com/store-locator/store/1010326/",
-        image: "/images/shops/starbucks-coffee.jpg"
+        image: getImagePath("/images/shops/starbucks-coffee.jpg")
     },
     {
         id: 10,
@@ -119,7 +121,7 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "400 Market St, Lewisburg, PA 17837",
         phone: "(570) 577-3960",
         website: "https://bucknell.bncollege.com",
-        image: "/images/shops/barnes-noble-caf.jpg"
+        image: getImagePath("/images/shops/barnes-noble-caf.jpg")
     },
     {
         id: 11,
@@ -130,7 +132,7 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "224 Hardwood Dr, Lewisburg, PA 17837",
         phone: "(570) 523-3200",
         website: "https://www.starbucks.com",
-        image: "/images/shops/starbucks-giant.jpg"
+        image: getImagePath("/images/shops/starbucks-giant.jpg")
     },
     {
         id: 12,
@@ -141,7 +143,7 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "600 N Derr Dr, Lewisburg, PA 17837",
         phone: "(570) 524-4900",
         website: "https://www.dunkindonuts.com",
-        image: "/images/shops/dunkin.jpg"
+        image: getImagePath("/images/shops/dunkin.jpg")
     },
     {
         id: 13,
@@ -152,7 +154,7 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "232 Market St, Lewisburg, PA 17837",
         phone: "(570) 523-1234",
         website: "https://www.aleescafe.com",
-        image: "/images/shops/alee-s-cafe.jpg"
+        image: getImagePath("/images/shops/alee-s-cafe.jpg")
     },
     {
         id: 14,
@@ -163,7 +165,7 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "300 Market St, Lewisburg, PA 17837",
         phone: "(570) 524-1000",
         website: "https://www.allstarbagels.com",
-        image: "/images/shops/all-star-bagels.jpg"
+        image: getImagePath("/images/shops/all-star-bagels.jpg")
     },
     {
         id: 15,
@@ -174,7 +176,7 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "6951 Westbranch Hwy, Lewisburg, PA 17837",
         phone: "(570) 524-0000",
         website: "https://www.panerabread.com",
-        image: "/images/shops/panera-bread.jpg"
+        image: getImagePath("/images/shops/panera-bread.jpg")
     },
     {
         id: 16,
@@ -185,6 +187,6 @@ export const COFFEE_SHOPS: CoffeeShop[] = [
         address: "100 N Water St, Lewisburg, PA 17837",
         phone: "(570) 523-0420",
         website: "https://streetofshops.net",
-        image: "/images/shops/street-of-shops.jpg"
+        image: getImagePath("/images/shops/street-of-shops.jpg")
     }
 ];
