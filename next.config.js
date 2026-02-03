@@ -7,7 +7,7 @@ import "./src/env.js";
 /** @type {import("next").NextConfig} */
 const config = {
     output: "export",
-    basePath: process.env.GITHUB_ACTIONS ? "/lewisburg-coffee" : undefined,
+    basePath: process.env.NEXT_PUBLIC_BASE_PATH || undefined,
     images: {
         unoptimized: true,
     },
