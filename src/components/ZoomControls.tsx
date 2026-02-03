@@ -13,7 +13,7 @@ export function ZoomControls() {
                 variant="outline"
                 size="icon"
                 onClick={() => map.zoomIn()}
-                className="rounded-xl border border-glass-border bg-glass-background text-glass-text-primary shadow-lg backdrop-blur-md transition-all hover:bg-glass-border hover:text-white"
+                className="rounded-xl border border-glass-border bg-glass-background text-glass-text-primary shadow-lg backdrop-blur-md transition-all hover:bg-glass-border"
             >
                 <Plus className="h-5 w-5" />
                 <span className="sr-only">Zoom in</span>
@@ -22,7 +22,7 @@ export function ZoomControls() {
                 variant="outline"
                 size="icon"
                 onClick={() => map.zoomOut()}
-                className="rounded-xl border border-glass-border bg-glass-background text-glass-text-primary shadow-lg backdrop-blur-md transition-all hover:bg-glass-border hover:text-white"
+                className="rounded-xl border border-glass-border bg-glass-background text-glass-text-primary shadow-lg backdrop-blur-md transition-all hover:bg-glass-border"
             >
                 <Minus className="h-5 w-5" />
                 <span className="sr-only">Zoom out</span>
@@ -31,7 +31,7 @@ export function ZoomControls() {
                 variant="outline"
                 size="icon"
                 onClick={() => map.setView([40.9645, -76.8845], 15)}
-                className="rounded-xl border border-glass-border bg-glass-background text-glass-text-primary shadow-lg backdrop-blur-md transition-all hover:bg-glass-border hover:text-white"
+                className="rounded-xl border border-glass-border bg-glass-background text-glass-text-primary shadow-lg backdrop-blur-md transition-all hover:bg-glass-border"
             >
                 <Home className="h-5 w-5" />
                 <span className="sr-only">Reset view</span>

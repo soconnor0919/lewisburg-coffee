@@ -54,7 +54,7 @@ export function AboutModal({ isOpen, onClose }: AboutModalProps) {
                 <div className="flex justify-center">
                     <Button
                         variant="outline"
-                        className="gap-2 border-glass-border bg-glass-border/20 hover:bg-glass-border text-glass-text-primary hover:text-white"
+                        className="gap-2 border-glass-border bg-glass-border/20 hover:bg-glass-border text-glass-text-primary"
                         asChild
                     >
                         <a href="https://github.com/soconnor0919/lewisburg-coffee" target="_blank" rel="noopener noreferrer">

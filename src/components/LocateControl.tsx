@@ -72,7 +72,7 @@ export function LocateControl() {
             size="icon"
             onClick={handleLocate}
             disabled={loading}
-            className="rounded-xl border border-glass-border bg-glass-background text-glass-text-primary shadow-lg backdrop-blur-md transition-all hover:bg-glass-border hover:text-white"
+            className="rounded-xl border border-glass-border bg-glass-background text-glass-text-primary shadow-lg backdrop-blur-md transition-all hover:bg-glass-border"
         >
             <Locate className={`h-5 w-5 ${loading ? 'animate-pulse' : ''}`} />
             <span className="sr-only">Locate me</span>

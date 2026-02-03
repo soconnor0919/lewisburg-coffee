@@ -1,4 +1,4 @@
-import { Coffee, Search, X } from "lucide-react";
+import { Coffee, PanelLeft, X } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "~/components/ui/tooltip";
 import { useState, useEffect } from "react";
@@ -59,9 +59,9 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
                       setIsOnboarding(false);
                       localStorage.setItem('discovery-panel-hint-seen', 'true');
                     }}
-                    className={`h-10 w-10 rounded-lg transition-colors ${isDiscoveryOpen ? 'bg-glass-border text-amber-500' : 'text-glass-text-primary hover:bg-glass-border hover:text-white'}`}
+                    className={`h-10 w-10 rounded-lg transition-colors ${isDiscoveryOpen ? 'bg-glass-border text-amber-500' : 'text-glass-text-primary hover:bg-glass-border'}`}
                   >
-                    <Search className="h-5 w-5" />
+                    <PanelLeft className="h-5 w-5" />
                     <span className="sr-only">Toggle Panel</span>
                   </Button>
                 </TooltipTrigger>
@@ -97,7 +97,7 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
               variant="ghost"
               size="icon"
               onClick={() => setShowAbout(false)}
-              className="absolute top-4 right-4 text-glass-text-secondary hover:text-white hover:bg-glass-border"
+              className="absolute top-4 right-4 text-glass-text-secondary hover:text-glass-text-primary hover:bg-glass-border"
             >
               <X className="w-5 h-5" />
             </Button>
@@ -107,15 +107,15 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
                 <Coffee className="w-8 h-8 text-amber-500" />
               </div>
               <h2 className="text-2xl font-bold font-serif">Lewisburg Coffee Map</h2>
-              <p className="text-white/60 font-serif leading-relaxed">
+              <p className="text-glass-text-secondary font-serif leading-relaxed">
                 Discover the best coffee spots in Lewisburg, PA. Click on any marker to learn more about each location,
                 or use the discovery panel to browse and search all available shops.
               </p>
 
-              <div className="w-full h-px bg-white/10 my-4" />
+              <div className="w-full h-px bg-glass-border my-4" />
 
-              <div className="text-xs text-white/60 space-y-2 font-sans w-full text-left">
-                <p><strong className="text-white/80">Features:</strong></p>
+              <div className="text-xs text-glass-text-secondary space-y-2 font-sans w-full text-left">
+                <p><strong className="text-glass-text-primary">Features:</strong></p>
                 <ul className="list-disc list-inside space-y-1 ml-2">
                   <li>Interactive map with coffee shop locations</li>
                   <li>Search and filter coffee shops</li>
@@ -123,9 +123,9 @@ export default function Navbar({ isDiscoveryOpen, onToggleDiscovery }: NavbarPro
                   <li>Get directions to any shop</li>
                   <li>Light/Dark theme support</li>
                 </ul>
-                <div className="pt-4 border-t border-white/10 mt-4">
-                  <p>Map Data © <a href="https://www.openstreetmap.org/copyright" className="underline hover:text-white transition-colors">OpenStreetMap</a> contributors</p>
-                  <p>Tiles © <a href="https://carto.com/attributions" className="underline hover:text-white transition-colors">CARTO</a></p>
+                <div className="pt-4 border-t border-glass-border mt-4">
+                  <p>Map Data © <a href="https://www.openstreetmap.org/copyright" className="underline hover:text-glass-text-primary transition-colors">OpenStreetMap</a> contributors</p>
+                  <p>Tiles © <a href="https://carto.com/attributions" className="underline hover:text-glass-text-primary transition-colors">CARTO</a></p>
                 </div>
               </div>
             </div>

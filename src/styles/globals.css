@@ -53,11 +53,11 @@
 :root {
   --radius: 0.625rem;
   /* ... existing vars ... */
-  --glass-background: rgba(0, 0, 0, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.15);
-  --glass-text-primary: rgba(255, 255, 255, 0.95);
-  --glass-text-secondary: rgba(255, 255, 255, 0.70);
-  
+  --glass-background: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-text-primary: rgba(0, 0, 0, 0.9);
+  --glass-text-secondary: rgba(0, 0, 0, 0.6);
+
   --background: oklch(1 0 0);
   /* ... */
   --foreground: oklch(0.145 0 0);
@@ -93,6 +93,11 @@
 }
 
 .dark {
+  --glass-background: rgba(0, 0, 0, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-text-primary: rgba(255, 255, 255, 0.95);
+  --glass-text-secondary: rgba(255, 255, 255, 0.70);
+
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -130,6 +135,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

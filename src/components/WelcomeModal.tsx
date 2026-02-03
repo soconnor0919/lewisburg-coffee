@@ -88,7 +88,7 @@ export function WelcomeModal() {
                     </div>
                 </div>
                 <div className="flex justify-center">
-                    <Button onClick={handleClose} className="w-full sm:w-auto min-w-[120px] bg-white text-black hover:bg-white/90">
+                    <Button onClick={handleClose} className="w-full sm:w-auto min-w-[120px] bg-black text-white hover:bg-black/90 dark:bg-white dark:text-black dark:hover:bg-white/90">
                         Start Exploring
                     </Button>
                 </div>

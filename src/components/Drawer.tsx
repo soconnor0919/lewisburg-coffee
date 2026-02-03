@@ -86,15 +86,15 @@ export default function Drawer({ shop, shops, onSelect, onClose, isOpen, onToggl
                                     variant="ghost"
                                     size="icon"
                                     onClick={(e) => toggleFavorite(activeShop.id, e)}
-                                    className="bg-black/40 hover:bg-black/60 text-white rounded-full h-8 w-8 backdrop-blur-md border border-glass-border"
+                                    className="bg-glass-background hover:bg-glass-border text-glass-text-primary rounded-full h-8 w-8 backdrop-blur-md border border-glass-border"
                                 >
-                                    <Heart className={`w-4 h-4 ${favorites.has(activeShop.id) ? 'fill-red-500 text-red-500' : 'text-white'}`} />
+                                    <Heart className={`w-4 h-4 ${favorites.has(activeShop.id) ? 'fill-red-500 text-red-500' : 'text-glass-text-primary'}`} />
                                 </Button>
                                 <Button
                                     variant="ghost"
                                     size="icon"
                                     onClick={onClose}
-                                    className="bg-black/40 hover:bg-black/60 text-white rounded-full h-8 w-8 backdrop-blur-md border border-glass-border"
+                                    className="bg-glass-background hover:bg-glass-border text-glass-text-primary rounded-full h-8 w-8 backdrop-blur-md border border-glass-border"
                                 >
                                     <ChevronLeft className="w-4 h-4" />
                                 </Button>
@@ -105,7 +105,7 @@ export default function Drawer({ shop, shops, onSelect, onClose, isOpen, onToggl
                                         onClose();
                                         if (onToggleOpen) onToggleOpen();
                                     }}
-                                    className="bg-black/40 hover:bg-black/60 text-white rounded-full h-8 w-8 backdrop-blur-md border border-glass-border"
+                                    className="bg-glass-background hover:bg-glass-border text-glass-text-primary rounded-full h-8 w-8 backdrop-blur-md border border-glass-border"
                                 >
                                     <X className="w-4 h-4" />
                                 </Button>
@@ -119,8 +119,8 @@ export default function Drawer({ shop, shops, onSelect, onClose, isOpen, onToggl
                                             className="absolute inset-0 z-10 flex items-center justify-center"
                                             style={FADE_BOTTOM_STYLE}
                                         >
-                                            <Skeleton className="h-full w-full absolute inset-0 bg-white/5" />
-                                            <Coffee className="h-12 w-12 text-white/20 animate-pulse relative z-20" />
+                                            <Skeleton className="h-full w-full absolute inset-0 bg-glass-border" />
+                                            <Coffee className="h-12 w-12 text-glass-text-secondary/20 animate-pulse relative z-20" />
                                         </div>
                                     )}
                                     <div className="absolute inset-0 z-0">
@@ -150,7 +150,7 @@ export default function Drawer({ shop, shops, onSelect, onClose, isOpen, onToggl
                                     </div>
 
                                     <div className="space-y-3">
-                                        <Button className="w-full bg-white text-black hover:bg-white/90 gap-2 font-medium" asChild>
+                                        <Button className="w-full bg-black text-white hover:bg-black/90 dark:bg-white dark:text-black dark:hover:bg-white/90 gap-2 font-medium" asChild>
                                             <a
                                                 href={`https://www.google.com/maps/dir/?api=1&destination=${activeShop.lat},${activeShop.lng}`}
                                                 target="_blank"
@@ -162,7 +162,7 @@ export default function Drawer({ shop, shops, onSelect, onClose, isOpen, onToggl
                                         </Button>
                                         <div className="grid grid-cols-2 gap-3">
                                             {activeShop.website && (
-                                                <Button variant="outline" className="w-full border-glass-border text-glass-text-primary hover:bg-glass-border hover:text-white gap-2 text-xs" asChild>
+                                                <Button variant="outline" className="w-full border-glass-border text-glass-text-primary hover:bg-glass-border hover:text-glass-text-primary gap-2 text-xs" asChild>
                                                     <a href={activeShop.website} target="_blank" rel="noopener noreferrer">
                                                         <Globe className="w-3.5 h-3.5" />
                                                         Website
@@ -170,7 +170,7 @@ export default function Drawer({ shop, shops, onSelect, onClose, isOpen, onToggl
                                                 </Button>
                                             )}
                                             {activeShop.phone && (
-                                                <Button variant="outline" className="w-full border-glass-border text-glass-text-primary hover:bg-glass-border hover:text-white gap-2 text-xs" asChild>
+                                                <Button variant="outline" className="w-full border-glass-border text-glass-text-primary hover:bg-glass-border hover:text-glass-text-primary gap-2 text-xs" asChild>
                                                     <a href={`tel:${activeShop.phone}`}>
                                                         <Phone className="w-3.5 h-3.5" />
                                                         Call
@@ -207,7 +207,7 @@ export default function Drawer({ shop, shops, onSelect, onClose, isOpen, onToggl
                     <ScrollArea className="flex-1 min-h-0">
                         <div className="p-4 space-y-6">
                             {filteredShops.length === 0 ? (
-                                <div className="text-center py-8 text-white/40">
+                                <div className="text-center py-8 text-glass-text-secondary/60">
                                     <Coffee className="h-12 w-12 mx-auto mb-3 opacity-20" />
                                     <p>No shops found matching "{searchQuery}"</p>
                                 </div>
@@ -272,13 +272,13 @@ function ShopListItem({ shop, onSelect, isFavorite, onToggleFavorite }: { shop: 
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="h-6 w-6 -mr-1 -mt-1 hover:bg-white/10 text-glass-text-secondary hover:text-red-500"
+                        className="h-6 w-6 -mr-1 -mt-1 hover:bg-glass-border text-glass-text-secondary hover:text-red-500"
                         onClick={(e) => onToggleFavorite(shop.id, e)}
                     >
                         <Heart className={`w-4 h-4 ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
                     </Button>
                 </div>
-                <p className="text-sm text-glass-text-secondary leading-snug group-hover:text-white/80 transition-colors line-clamp-2">{shop.address}</p>
+                <p className="text-sm text-glass-text-secondary leading-snug group-hover:text-glass-text-primary transition-colors line-clamp-2">{shop.address}</p>
             </div>
         </div>
     );
