@@ -1,7 +1,7 @@
 "use client";
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "~/components/ui/dialog";
-import { Coffee, Github, Heart } from "lucide-react";
+import { Coffee, Github } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface AboutModalProps {
@@ -47,7 +47,7 @@ export function AboutModal({ isOpen, onClose }: AboutModalProps) {
                             © 2026 Sean O'Connor. All Rights Reserved.
                         </p>
                         <p className="text-xs text-center text-glass-text-secondary flex items-center justify-center gap-1">
-                            Licensed under GPLv3. <Heart className="h-3 w-3 text-red-500 fill-red-500" />
+                            Licensed under GPLv3.
                         </p>
                     </div>
                 </div>
